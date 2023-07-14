@@ -1,6 +1,11 @@
 package core;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 //В этом классе мы присвоили вебдрайвер, который инициализируется в тестовом классе
 abstract public class baseSeleniumPage {
