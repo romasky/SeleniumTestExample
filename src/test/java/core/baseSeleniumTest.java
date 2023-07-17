@@ -34,11 +34,11 @@ abstract public class baseSeleniumTest {
     }
 
 
-   /* @AfterEach
+    @AfterEach
     public void tearDown() {
         driver.close(); //закрываем именно ChromeDriver
         driver.quit(); //закрываем именно браузер
         logger.info("Driver is closed and quit");
     }
-*/
+
 }

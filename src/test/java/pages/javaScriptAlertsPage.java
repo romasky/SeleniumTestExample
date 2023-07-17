@@ -3,7 +3,9 @@ package pages;
 import core.baseSeleniumPage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,12 +17,18 @@ import java.time.Duration;
 
 public class javaScriptAlertsPage extends baseSeleniumPage {
 
-    private final Logger logger = LogManager.getLogger(javaScriptAlertsPage.class);
+    private Logger logger = LogManager.getLogger(javaScriptAlertsPage.class);
 
     public Alert alert;
 
     @FindBy(xpath = "//button[@onclick='jsAlert()']")
     private WebElement jsAlertButton;
+
+    @FindBy(xpath = "//button[@onclick='jsConfirm()']")
+    private WebElement jsConfirmAlertButton;
+
+    @FindBy(xpath = "//p[@id]")
+    private WebElement jsAlertText;
 
 
     public javaScriptAlertsPage() {
@@ -31,7 +39,12 @@ public class javaScriptAlertsPage extends baseSeleniumPage {
 
     public void alertHandler(WebDriver driver) {
         // Переключаемся на алерт
-        this.alert = driver.switchTo().alert();
+        try {
+            this.alert = driver.switchTo().alert();
+        } catch (NoAlertPresentException e) {
+            // Обработка случая, когда алерт отсутствует
+            this.alert = null;
+        }
     }
 
     public String getAlertText() {
@@ -42,7 +55,6 @@ public class javaScriptAlertsPage extends baseSeleniumPage {
 
     public void acceptAlert() {
         // Принимаем алерт
-        alertHandler(driver);
         alert.accept();
     }
 
@@ -71,24 +83,54 @@ public class javaScriptAlertsPage extends baseSeleniumPage {
 
     public void openSimpleAlertCheck() {
         jsAlertButton.click();
-        logger.info("Page opened successfully");
         wait.until(ExpectedConditions.alertIsPresent());
+        logger.info("Simple Alert is open");
         alertHandler(driver);
     }
-
-
 
     public javaScriptAlertsPage openSimpleAlertAndMakeSomeAction() {
         jsAlertButton.click();
-        logger.info("Page opened successfully");
         wait.until(ExpectedConditions.alertIsPresent());
         alertHandler(driver);
+        logger.info("Simple Alert is open");
         return new javaScriptAlertsPage();
     }
 
-    public void openConfirmAlert() {
-
+    public String checkTextSimpleAlertCompare() {
+        jsAlertButton.click();
+        wait.until(ExpectedConditions.alertIsPresent());
+        alertHandler(driver);
+        logger.info("Simple Alert is open");
+        acceptAlert();
+        driver.switchTo().defaultContent();
+        return jsAlertText.getText();
     }
+
+    public void openSimpleAlertAndCloseIt() {
+        jsAlertButton.click();
+        wait.until(ExpectedConditions.alertIsPresent());
+        alertHandler(driver);
+        logger.info("Simple Alert is open");
+        acceptAlert();
+        wait.until(ExpectedConditions.not(ExpectedConditions.alertIsPresent()));
+        driver.switchTo().defaultContent();
+        logger.info("Simple Alert is closed");
+    }
+
+
+
+
+
+
+    public void openConfirmAlert() {
+        jsConfirmAlertButton.click();
+        wait.until(ExpectedConditions.alertIsPresent());
+        alertHandler(driver);
+        logger.info("Simple Alert is open");
+    }
+
+
+
 
 
     public void openPromptAlert() {

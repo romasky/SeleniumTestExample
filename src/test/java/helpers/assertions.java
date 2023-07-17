@@ -16,4 +16,13 @@ public class assertions {
         Assertions.assertEquals(expectedValue, actualValue, "Alert text is not equal to expectedValue " + expectedValue);
 
     }
+    public static void checkAlertClosed(javaScriptAlertsPage javaScriptAlertsPage) {
+        Assertions.assertNull(javaScriptAlertsPage.alert, "Failed to close the alert");
+    }
+
+    public static void textCompare(String expectedValue, String actualValue) {
+        Assertions.assertEquals(expectedValue, actualValue,"Text value is not equal to expectedValue " + expectedValue);
+
+    }
+
 }
