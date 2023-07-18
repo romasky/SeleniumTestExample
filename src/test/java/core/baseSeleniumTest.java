@@ -7,6 +7,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.javaScriptAlertsPage;
 
@@ -28,6 +30,7 @@ abstract public class baseSeleniumTest {
 /*        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS); //неявное ожидание, для загрузки веб-страницы
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS); //неявное ожидание*/
 
+
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         baseSeleniumPage.setDriver(driver);
         logger.info("Driver is initialized");
@@ -42,8 +45,12 @@ abstract public class baseSeleniumTest {
         } catch (NoAlertPresentException e) {
             // Алерт не найден, продолжаем
         }
-        driver.close(); //закрываем именно ChromeDriver
-        driver.quit(); //закрываем именно браузер
+
+        if (driver != null) {
+            //driver.close(); //Если вы хотите закрыть текущее окно браузера, но оставить сессию WebDriver активной (например, если вам нужно открыть новое окно или выполнить другие действия), то просто используйте метод close() без вызова quit()
+            driver.quit(); //Если вы хотите закрыть все окна браузера и завершить сеанс WebDriver, используйте только метод quit()
+        }
+
         logger.info("Driver is closed and quit");
     }
 

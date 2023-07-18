@@ -3,10 +3,9 @@ package testsBySelenium;
 import core.baseSeleniumTest;
 import helpers.assertions;
 import helpers.testValues;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import pages.javaScriptAlertsPage;
 import pages.mainPage;
 
@@ -29,7 +28,7 @@ public class javaScriptAlertsTest extends baseSeleniumTest {
 
         javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
                 .openJSAlertsPage();
-        javaScriptAlertsPage.openSimpleAlertAndMakeSomeAction();
+        javaScriptAlertsPage.openSimpleAlertCheck();
 
         assertions.checkAlertText(testValues.ALERT_TEXT_JSALERT,javaScriptAlertsPage.getAlertText());
     }
@@ -60,6 +59,35 @@ public class javaScriptAlertsTest extends baseSeleniumTest {
         javaScriptAlertsPage.openConfirmAlertCheck();
 
         assertions.checkAlertAppears(javaScriptAlertsPage);
+    }
+
+
+    @ParameterizedTest
+    @ValueSource(strings = {"simple", "confirm", "prompt"})
+    public void testPositiveAlertOpen(String condition) {
+
+       if(condition.equals("simple")) {
+           javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
+                   .openJSAlertsPage();
+           javaScriptAlertsPage.openAlert("simple");
+
+           assertions.checkAlertAppears(javaScriptAlertsPage);
+        } else if(condition.equals("confirm")) {
+           javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
+                   .openJSAlertsPage();
+           javaScriptAlertsPage.openAlert("confirm");
+
+           assertions.checkAlertAppears(javaScriptAlertsPage);
+        }
+       else if(condition.equals("prompt")) {
+           javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
+                   .openJSAlertsPage();
+           javaScriptAlertsPage.openAlert("prompt");
+
+           assertions.checkAlertAppears(javaScriptAlertsPage);
+       } else {
+            throw new IllegalArgumentException("Condition value is not known: " + condition);
+        }
     }
 
 

@@ -16,7 +16,7 @@ import java.time.Duration;
 
 public class javaScriptAlertsPage extends baseSeleniumPage {
 
-    private Logger logger = LogManager.getLogger(javaScriptAlertsPage.class);
+    private final Logger logger = LogManager.getLogger(javaScriptAlertsPage.class);
 
     public Alert alert;
 
@@ -26,12 +26,11 @@ public class javaScriptAlertsPage extends baseSeleniumPage {
     @FindBy(xpath = "//button[@onclick='jsConfirm()']")
     private WebElement jsConfirmAlertButton;
 
+    @FindBy(xpath = "//button[@onclick='jsPrompt()']")
+    private WebElement jsPromptAlertButton;
+
     @FindBy(xpath = "//p[@id]")
     private WebElement jsAlertText;
-
-
-
-
 
 
     public javaScriptAlertsPage() {
@@ -57,6 +56,7 @@ public class javaScriptAlertsPage extends baseSeleniumPage {
 
     public void acceptAlert() {   // Принимаем алерт
         alert.accept();
+        driver.switchTo().defaultContent();
     }
 
     public void dismissAlert() {  // Отклоняем алерт
@@ -66,12 +66,6 @@ public class javaScriptAlertsPage extends baseSeleniumPage {
     public void sendKeysToAlert(String text) {   // Вводим текст в поле ввода алерта
         alert.sendKeys(text);
     }
-
-    public void closeAlert() {  // Закрываем алерт и возвращаемся к основному окну
-        alert.accept();
-        driver.switchTo().defaultContent();
-    }
-
 
 
 //создадим методы, которые будут открывать simple, confirm, prompt alerts
@@ -84,20 +78,12 @@ public class javaScriptAlertsPage extends baseSeleniumPage {
         alertHandler(driver);
     }
 
-    public void openSimpleAlertAndMakeSomeAction() {
-        jsAlertButton.click();
-        wait.until(ExpectedConditions.alertIsPresent());
-        alertHandler(driver);
-        logger.info("Simple Alert is open");
-    }
-
     public String checkTextSimpleAlertCompare() {
         jsAlertButton.click();
         wait.until(ExpectedConditions.alertIsPresent());
         alertHandler(driver);
         logger.info("Simple Alert is open");
         acceptAlert();
-        driver.switchTo().defaultContent();
         return jsAlertText.getText();
     }
 
@@ -106,7 +92,7 @@ public class javaScriptAlertsPage extends baseSeleniumPage {
         wait.until(ExpectedConditions.alertIsPresent());
         alertHandler(driver);
         logger.info("Simple Alert is open");
-        closeAlert();
+        acceptAlert();
         wait.until(ExpectedConditions.not(ExpectedConditions.alertIsPresent()));
         alert = null;
         logger.info("Simple Alert is closed");
@@ -124,15 +110,32 @@ public class javaScriptAlertsPage extends baseSeleniumPage {
 
 
 
+    public void openAlert(String type) {
+        switch (type.toLowerCase()) {
+            case "simple":
+                jsAlertButton.click();
+                logger.info("Simple Alert is open");
+                break;
+            case "confirm":
+                jsConfirmAlertButton.click();
+                logger.info("Confirm Alert is open");
+                break;
+            case "prompt":
+                jsConfirmAlertButton.click();
+                logger.info("Prompt Alert is open");
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid alert type: " + type);
+        }
 
-
-
-    //Prompt Alert
-
-
-    public void openPromptAlert() {
-
+        wait.until(ExpectedConditions.alertIsPresent());
+        alertHandler(driver);
     }
+
+
+
+
+
 
 
 }
