@@ -3,7 +3,6 @@ package pages;
 import core.baseSeleniumPage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
@@ -31,14 +30,18 @@ public class javaScriptAlertsPage extends baseSeleniumPage {
     private WebElement jsAlertText;
 
 
+
+
+
+
     public javaScriptAlertsPage() {
         PageFactory.initElements(driver, this);
     }
 
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
-    public void alertHandler(WebDriver driver) {
-        // Переключаемся на алерт
+    public void alertHandler(WebDriver driver) {  // Переключаемся на алерт
+
         try {
             this.alert = driver.switchTo().alert();
         } catch (NoAlertPresentException e) {
@@ -47,32 +50,24 @@ public class javaScriptAlertsPage extends baseSeleniumPage {
         }
     }
 
-    public String getAlertText() {
-        // Получаем текст из алерта
+    public String getAlertText() {   // Получаем текст из алерта
         alertHandler(driver);
         return alert.getText();
     }
 
-    public void acceptAlert() {
-        // Принимаем алерт
+    public void acceptAlert() {   // Принимаем алерт
         alert.accept();
     }
 
-    public void dismissAlert() {
-        // Отклоняем алерт
-        alertHandler(driver);
+    public void dismissAlert() {  // Отклоняем алерт
         alert.dismiss();
     }
 
-    public void sendKeysToAlert(String text) {
-        // Вводим текст в поле ввода алерта
-        alertHandler(driver);
+    public void sendKeysToAlert(String text) {   // Вводим текст в поле ввода алерта
         alert.sendKeys(text);
     }
 
-    public void closeAlert() {
-        // Закрываем алерт и возвращаемся к основному окну
-        alertHandler(driver);
+    public void closeAlert() {  // Закрываем алерт и возвращаемся к основному окну
         alert.accept();
         driver.switchTo().defaultContent();
     }
@@ -81,6 +76,7 @@ public class javaScriptAlertsPage extends baseSeleniumPage {
 
 //создадим методы, которые будут открывать simple, confirm, prompt alerts
 
+    //Simple Alert
     public void openSimpleAlertCheck() {
         jsAlertButton.click();
         wait.until(ExpectedConditions.alertIsPresent());
@@ -88,12 +84,11 @@ public class javaScriptAlertsPage extends baseSeleniumPage {
         alertHandler(driver);
     }
 
-    public javaScriptAlertsPage openSimpleAlertAndMakeSomeAction() {
+    public void openSimpleAlertAndMakeSomeAction() {
         jsAlertButton.click();
         wait.until(ExpectedConditions.alertIsPresent());
         alertHandler(driver);
         logger.info("Simple Alert is open");
-        return new javaScriptAlertsPage();
     }
 
     public String checkTextSimpleAlertCompare() {
@@ -111,26 +106,28 @@ public class javaScriptAlertsPage extends baseSeleniumPage {
         wait.until(ExpectedConditions.alertIsPresent());
         alertHandler(driver);
         logger.info("Simple Alert is open");
-        acceptAlert();
+        closeAlert();
         wait.until(ExpectedConditions.not(ExpectedConditions.alertIsPresent()));
-        driver.switchTo().defaultContent();
+        alert = null;
         logger.info("Simple Alert is closed");
     }
 
 
+    //Confirm Alert
 
-
-
-
-    public void openConfirmAlert() {
+    public void openConfirmAlertCheck() {
         jsConfirmAlertButton.click();
         wait.until(ExpectedConditions.alertIsPresent());
         alertHandler(driver);
-        logger.info("Simple Alert is open");
+        logger.info("Confirm Alert is open");
     }
 
 
 
+
+
+
+    //Prompt Alert
 
 
     public void openPromptAlert() {

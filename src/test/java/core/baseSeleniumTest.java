@@ -36,6 +36,12 @@ abstract public class baseSeleniumTest {
 
     @AfterEach
     public void tearDown() {
+        try {
+            Alert alert = driver.switchTo().alert();
+            alert.accept();
+        } catch (NoAlertPresentException e) {
+            // Алерт не найден, продолжаем
+        }
         driver.close(); //закрываем именно ChromeDriver
         driver.quit(); //закрываем именно браузер
         logger.info("Driver is closed and quit");
