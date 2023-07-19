@@ -12,26 +12,72 @@ import pages.mainPage;
 public class javaScriptAlertsTest extends baseSeleniumTest {
 
 
-    /*Simple Alert tests*/
-    @Test
-    public void openSimpleAlert() {   //Проверяем, что алерт открылся и отобразился
+    /*Open Alerts*/
 
-        javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
-                .openJSAlertsPage();
-        javaScriptAlertsPage.openSimpleAlertCheck();
+    @ParameterizedTest
+    @ValueSource(strings = {"simple", "confirm", "prompt"})
+    public void testPositiveAlertOpen(String condition) {
 
-        assertions.checkAlertAppears(javaScriptAlertsPage);
+        if(condition.equals("simple")) {
+            javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
+                    .openJSAlertsPage();
+            javaScriptAlertsPage.openAlert("simple");
+
+            assertions.checkAlertAppears(javaScriptAlertsPage);
+        } else if(condition.equals("confirm")) {
+            javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
+                    .openJSAlertsPage();
+            javaScriptAlertsPage.openAlert("confirm");
+
+            assertions.checkAlertAppears(javaScriptAlertsPage);
+        }
+        else if(condition.equals("prompt")) {
+            javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
+                    .openJSAlertsPage();
+            javaScriptAlertsPage.openAlert("prompt");
+
+            assertions.checkAlertAppears(javaScriptAlertsPage);
+        } else {
+            throw new IllegalArgumentException("Condition value is not known: " + condition);
+        }
     }
 
-    @Test
-    public void openSimpleAlertAndCheckText() { //Проверяем, что алерт открылся и отобразился необходимый текст
+    /*Check Alerts Text*/
 
-        javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
-                .openJSAlertsPage();
-        javaScriptAlertsPage.openSimpleAlertCheck();
+    @ParameterizedTest
+    @ValueSource(strings = {"simple", "confirm", "prompt"})
+    public void testPositiveAlertCheckText(String condition) {
 
-        assertions.checkAlertText(testValues.ALERT_TEXT_JSALERT,javaScriptAlertsPage.getAlertText());
+        if(condition.equals("simple")) {
+            javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
+                    .openJSAlertsPage();
+            javaScriptAlertsPage.checkAlertsText("simple");
+
+            assertions.checkAlertText(testValues.ALERT_TEXT_JSALERT,javaScriptAlertsPage.getAlertText());
+        } else if(condition.equals("confirm")) {
+            javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
+                    .openJSAlertsPage();
+            javaScriptAlertsPage.checkAlertsText("confirm");
+
+            assertions.checkAlertText(testValues.ALERT_TEXT_JSALERT_CONFIRM,javaScriptAlertsPage.getAlertText());
+        }
+        else if(condition.equals("prompt")) {
+            javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
+                    .openJSAlertsPage();
+            javaScriptAlertsPage.checkAlertsText("prompt");
+
+            assertions.checkAlertText(testValues.ALERT_TEXT_JSALERT_PROMPT,javaScriptAlertsPage.getAlertText());
+        } else {
+            throw new IllegalArgumentException("Condition value is not known: " + condition);
+        }
     }
+
+
+
+
+
+
+
 
     @Test void CheckSimpleAlertTextAfterSuccessfullyClosed() { //Проверяем, что текст совпадает после закрытия алерта
         javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
@@ -50,45 +96,10 @@ public class javaScriptAlertsTest extends baseSeleniumTest {
     }
 
 
-    /* Confirm Alert tests */
-    @Test
-    public void openConfirmAlert() {   //Проверяем, что confirm-алерт открылся и отобразился
-
-        javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
-                .openJSAlertsPage();
-        javaScriptAlertsPage.openConfirmAlertCheck();
-
-        assertions.checkAlertAppears(javaScriptAlertsPage);
-    }
 
 
-    @ParameterizedTest
-    @ValueSource(strings = {"simple", "confirm", "prompt"})
-    public void testPositiveAlertOpen(String condition) {
 
-       if(condition.equals("simple")) {
-           javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
-                   .openJSAlertsPage();
-           javaScriptAlertsPage.openAlert("simple");
 
-           assertions.checkAlertAppears(javaScriptAlertsPage);
-        } else if(condition.equals("confirm")) {
-           javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
-                   .openJSAlertsPage();
-           javaScriptAlertsPage.openAlert("confirm");
-
-           assertions.checkAlertAppears(javaScriptAlertsPage);
-        }
-       else if(condition.equals("prompt")) {
-           javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
-                   .openJSAlertsPage();
-           javaScriptAlertsPage.openAlert("prompt");
-
-           assertions.checkAlertAppears(javaScriptAlertsPage);
-       } else {
-            throw new IllegalArgumentException("Condition value is not known: " + condition);
-        }
-    }
 
 
 
