@@ -3,7 +3,6 @@ package testsBySelenium;
 import core.baseSeleniumTest;
 import helpers.assertions;
 import helpers.testValues;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import pages.javaScriptAlertsPage;
@@ -11,31 +10,26 @@ import pages.mainPage;
 
 public class javaScriptAlertsTest extends baseSeleniumTest {
 
-
     /*Open Alerts*/
 
     @ParameterizedTest
     @ValueSource(strings = {"simple", "confirm", "prompt"})
     public void testPositiveAlertOpen(String condition) {
+        javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
+                .openJSAlertsPage();
 
         if(condition.equals("simple")) {
-            javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
-                    .openJSAlertsPage();
-            javaScriptAlertsPage.openAlert("simple");
 
+            javaScriptAlertsPage.openAlert("simple");
             assertions.checkAlertAppears(javaScriptAlertsPage);
         } else if(condition.equals("confirm")) {
-            javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
-                    .openJSAlertsPage();
-            javaScriptAlertsPage.openAlert("confirm");
 
+            javaScriptAlertsPage.openAlert("confirm");
             assertions.checkAlertAppears(javaScriptAlertsPage);
         }
         else if(condition.equals("prompt")) {
-            javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
-                    .openJSAlertsPage();
-            javaScriptAlertsPage.openAlert("prompt");
 
+            javaScriptAlertsPage.openAlert("prompt");
             assertions.checkAlertAppears(javaScriptAlertsPage);
         } else {
             throw new IllegalArgumentException("Condition value is not known: " + condition);
@@ -47,65 +41,58 @@ public class javaScriptAlertsTest extends baseSeleniumTest {
     @ParameterizedTest
     @ValueSource(strings = {"simple", "confirm", "prompt"})
     public void testPositiveAlertCheckText(String condition) {
+        javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
+                .openJSAlertsPage();
 
         if(condition.equals("simple")) {
-            javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
-                    .openJSAlertsPage();
-            javaScriptAlertsPage.checkAlertsText("simple");
 
+            javaScriptAlertsPage.checkAlertsText("simple");
             assertions.checkAlertText(testValues.ALERT_TEXT_JSALERT,javaScriptAlertsPage.getAlertText());
         } else if(condition.equals("confirm")) {
-            javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
-                    .openJSAlertsPage();
-            javaScriptAlertsPage.checkAlertsText("confirm");
 
+            javaScriptAlertsPage.checkAlertsText("confirm");
             assertions.checkAlertText(testValues.ALERT_TEXT_JSALERT_CONFIRM,javaScriptAlertsPage.getAlertText());
         }
         else if(condition.equals("prompt")) {
-            javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
-                    .openJSAlertsPage();
-            javaScriptAlertsPage.checkAlertsText("prompt");
 
+            javaScriptAlertsPage.checkAlertsText("prompt");
             assertions.checkAlertText(testValues.ALERT_TEXT_JSALERT_PROMPT,javaScriptAlertsPage.getAlertText());
         } else {
             throw new IllegalArgumentException("Condition value is not known: " + condition);
         }
     }
 
+    /*Check Alerts Text Result*/
 
-
-
-
-
-
-
-    @Test void CheckSimpleAlertTextAfterSuccessfullyClosed() { //Проверяем, что текст совпадает после закрытия алерта
-        javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
-                .openJSAlertsPage();
-        assertions.textCompare(testValues.ALERT_TEXT_JSALERT_TEXT,javaScriptAlertsPage.checkTextSimpleAlertCompare());
-    }
-
-    @Test
-    public void openSimpleAlertAndCloseIt() {   //Проверяем, что алерт открылся, отобразился и закрылся
+    @ParameterizedTest
+    @ValueSource(strings = {"simpleok", "confirmok", "confirmcancel","promptok", "promptcancel"})
+    public void testPositiveAlertCheckTextResult(String condition) {
 
         javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
                 .openJSAlertsPage();
-        javaScriptAlertsPage.openSimpleAlertAndCloseIt();
 
+        if(condition.equals("simpleok")) {
+
+            assertions.textCompare(testValues.JSALERT_OK_TEXT_RESULT,javaScriptAlertsPage.checkAlertsTextResult("simpleok"));
+        } else if(condition.equals("confirmok")) {
+
+            assertions.textCompare(testValues.JSALERT_CONFIRM_OK_TEXT_RESULT,javaScriptAlertsPage.checkAlertsTextResult("confirmok"));
+        }
+        else if(condition.equals("confirmcancel")) {
+
+            assertions.textCompare(testValues.JSALERT_CONFIRM_CANCEL_TEXT_RESULT,javaScriptAlertsPage.checkAlertsTextResult("confirmcancel"));
+        }
+        else if(condition.equals("promptok")) {
+
+            assertions.textCompare(testValues.JSALERT_PROMPT_TEXT_RESULT_START+testValues.JSALERT_PROMPT_TEXT_RESULT_ENTER,javaScriptAlertsPage.checkAlertsTextResult("promptok"));
+
+        }
+        else if(condition.equals("promptcancel")) {
+
+            assertions.textCompare(testValues.JSALERT_PROMPT_TEXT_RESULT_START+testValues.JSALERT_PROMPT_TEXT_RESULT_NOENTER,javaScriptAlertsPage.checkAlertsTextResult("promptcancel"));
+        } else {
+            throw new IllegalArgumentException("Condition value is not known: " + condition);
+        }
         assertions.checkAlertClosed(javaScriptAlertsPage);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

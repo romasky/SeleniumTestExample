@@ -7,6 +7,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -25,7 +26,9 @@ abstract public class baseSeleniumTest {
     public void setUp() {
         WebDriverManager.chromedriver().setup();
 
-        driver = new ChromeDriver(); //отвечает за процесс взаимодействия с самим браузером, а хром это сам браузер
+        ChromeDriverService service=new ChromeDriverService.Builder().withLogOutput(System.out).build();
+
+        driver = new ChromeDriver(service); //отвечает за процесс взаимодействия с самим браузером, а хром это сам браузер
         driver.manage().window().maximize(); //Запуск драйвера на весь экран
 /*        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS); //неявное ожидание, для загрузки веб-страницы
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS); //неявное ожидание*/
@@ -51,7 +54,7 @@ abstract public class baseSeleniumTest {
             driver.quit(); //Если вы хотите закрыть все окна браузера и завершить сеанс WebDriver, используйте только метод quit()
         }
 
-        logger.info("Driver is closed and quit");
+        logger.info("Driver is quit");
     }
 
 }
