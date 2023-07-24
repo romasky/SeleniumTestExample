@@ -11,6 +11,9 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
     /* private final By queueList = By.id("id_queue"); //Обозначение самих локаторов, т.е. путь к самому элементу, а не их нахождение
      private final By queueList2 = By.xpath("//select[@id="id_queue"]");*/
 
+    @FindBy(xpath = "//a[@href='/abtest']")  //JavaScript Alerts
+    private WebElement abTestPage;                      //происходит инициализация данного элемента, когда мы к нему обращаемся
+
     @FindBy(xpath = "//a[@href='/javascript_alerts']")  //JavaScript Alerts
     private WebElement jsAlertsPage;                      //происходит инициализация данного элемента, когда мы к нему обращаемся
 
@@ -23,11 +26,19 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
         // и обеспечивает удобное взаимодействие с ними в тестовых сценариях.
     }
 
+    /*необходимо открыть страницу abTestPage*/
+    public abTestPage openAbTestPage(){
+        abTestPage.click();
+        return new abTestPage();
+    }
 
 
-    //необходимо открыть страницу javaScriptAlertsTest
+
+    //необходимо открыть страницу javaScriptAlertsPage
     public javaScriptAlertsPage openJSAlertsPage(){
         jsAlertsPage.click();
         return new javaScriptAlertsPage();
     }
+
+
 }

@@ -29,5 +29,11 @@ public class assertions {
         Assertions.assertEquals(expectedValue, actualValue,"Text value is not equal to expectedValue " + expectedValue);
         logger.info("Text is equals");
     }
-
+    public static void textCompare(String expectedValue1, String expectedValue2, String actualValue) {
+        if (actualValue.equals(expectedValue1) || actualValue.equals(expectedValue2)) {
+            logger.info("Text is equals");
+        } else {
+            Assertions.fail("Text value is not equal to expectedValue " + expectedValue1 + " or " + expectedValue2);
+        }
+    }
 }
