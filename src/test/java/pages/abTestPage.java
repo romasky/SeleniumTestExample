@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class abTestPage extends baseSeleniumPage {
-    private final Logger logger = LogManager.getLogger(javaScriptAlertsPage.class);
+    private final Logger logger = LogManager.getLogger(abTestPage.class);
 
     public Alert alert;
 

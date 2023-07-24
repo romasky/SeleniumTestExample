@@ -4,7 +4,7 @@ package helpers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.*;
+import pages.addRemovePage;
 import pages.javaScriptAlertsPage;
 
 public class assertions {
@@ -36,4 +36,17 @@ public class assertions {
             Assertions.fail("Text value is not equal to expectedValue " + expectedValue1 + " or " + expectedValue2);
         }
     }
+
+    public static void deleteButtonAppearsNTimes(addRemovePage addRemovePage) {
+        Assertions.assertTrue(addRemovePage.countDeleteButtons()==addRemovePage.n);
+        logger.info("Delete button appeared "+addRemovePage.n+" times");
+    }
+
+    public static void zeroListSize(addRemovePage addRemovePage) {
+        Assertions.assertTrue(addRemovePage.countDeleteButtons()==0);
+        logger.info("Delete button appeared and closed "+addRemovePage.n+" times");
+    }
+
+
+
 }
