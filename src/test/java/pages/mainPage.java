@@ -22,14 +22,19 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
     private WebElement abTestPage;                      //происходит инициализация данного элемента, когда мы к нему обращаемся
 
     @FindBy(xpath = "//a[@href='/add_remove_elements/']")  //Add/Remove Elements Page
-    private WebElement addRemovePage;                      //происходит инициализация данного элемента, когда мы к нему обращаемся
+    private WebElement addRemovePage;
 
     @FindBy(xpath = "//a[@href='/basic_auth']")  //Basic Auth (user and pass: admin)
-    private WebElement basicAuthPage;                      //происходит инициализация данного элемента, когда мы к нему обращаемся
+    private WebElement basicAuthPage;
+
+    @FindBy(xpath = "//a[@href='/broken_images']")  //Basic Auth (user and pass: admin)
+    private WebElement brokenImages;
+
+
 
 
     @FindBy(xpath = "//a[@href='/javascript_alerts']")  //JavaScript Alerts page
-    private WebElement jsAlertsPage;                      //происходит инициализация данного элемента, когда мы к нему обращаемся
+    private WebElement jsAlertsPage;
 
 
 
@@ -61,6 +66,13 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
         driver.get("https://the-internet.herokuapp.com/basic_auth");
         logger.info("basicAuthPage is open");
         return new basicAuthPage();
+    }
+
+    /*необходимо открыть страницу addRemovePage*/
+    public brokenImagesPage openBrokenImagesPage(){
+        brokenImages.click();
+        logger.info("brokenImagesPage is open");
+        return new brokenImagesPage();
     }
 
 

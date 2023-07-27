@@ -1,11 +1,19 @@
 package helpers;
 
 
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.WebElement;
 import pages.addRemovePage;
 import pages.javaScriptAlertsPage;
+import org.apache.http.*;
+
+import java.io.IOException;
+import java.util.List;
 
 public class assertions {
 
@@ -45,6 +53,25 @@ public class assertions {
     public static void zeroListSize(addRemovePage addRemovePage) {
         Assertions.assertTrue(addRemovePage.countDeleteButtons()==0);
         logger.info("Delete button appeared and closed "+addRemovePage.n+" times");
+    }
+
+    public static void checkImageLinks(List<WebElement> imagesLinks) throws IOException {
+
+        for (WebElement img:imagesLinks) {
+            HttpClient client = HttpClientBuilder.create().build();
+            HttpGet request = new HttpGet(img.getAttribute("src"));
+            HttpResponse response = client.execute(request);
+
+            if (response.getStatusLine().getStatusCode() != 200)
+            {
+                logger.info(img.getAttribute("outerHTML") + " is broken.");
+            } else {
+                logger.info(img.getAttribute("outerHTML") + " link exists.");
+            }
+
+        }
+
+
     }
 
 

@@ -34,8 +34,6 @@ public class addRemovePage extends baseSeleniumPage {
         PageFactory.initElements(driver, this);
     }
 
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-
     /*Создадим методы, которые будут добавлять и удалять элементы */
 
     public void clickAddElementButton() {
