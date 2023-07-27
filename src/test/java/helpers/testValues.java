@@ -9,6 +9,12 @@ public class testValues {
     final public static String AB_DESCRIPTION = "Also known as split testing. This is a way in which businesses are able to simultaneously test and learn different versions of a page to see which text and/or functionality works best towards a desired outcome (e.g. a user action such as a click-through).";
 
 
+    /*Basic Auth Test*/
+    final public static String BAT_NOT_AUTH_TEXT = "Not authorized";
+    final public static String BAT_TITLE_TEXT = "Basic Auth";
+    final public static String BAT_BODY_TEXT = "Congratulations! You must have the proper credentials.";
+
+
 
 
 

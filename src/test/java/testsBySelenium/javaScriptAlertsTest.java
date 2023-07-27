@@ -1,6 +1,7 @@
 package testsBySelenium;
 
 import core.baseSeleniumTest;
+import helpers.alertHelpers;
 import helpers.assertions;
 import helpers.testValues;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -47,16 +48,16 @@ public class javaScriptAlertsTest extends baseSeleniumTest {
         if(condition.equals("simple")) {
 
             javaScriptAlertsPage.checkAlertsText("simple");
-            assertions.checkAlertText(testValues.ALERT_TEXT_JSALERT,javaScriptAlertsPage.getAlertText());
+            assertions.checkAlertText(testValues.ALERT_TEXT_JSALERT, alertHelpers.getAlertText(driver));
         } else if(condition.equals("confirm")) {
 
             javaScriptAlertsPage.checkAlertsText("confirm");
-            assertions.checkAlertText(testValues.ALERT_TEXT_JSALERT_CONFIRM,javaScriptAlertsPage.getAlertText());
+            assertions.checkAlertText(testValues.ALERT_TEXT_JSALERT_CONFIRM,alertHelpers.getAlertText(driver));
         }
         else if(condition.equals("prompt")) {
 
             javaScriptAlertsPage.checkAlertsText("prompt");
-            assertions.checkAlertText(testValues.ALERT_TEXT_JSALERT_PROMPT,javaScriptAlertsPage.getAlertText());
+            assertions.checkAlertText(testValues.ALERT_TEXT_JSALERT_PROMPT,alertHelpers.getAlertText(driver));
         } else {
             throw new IllegalArgumentException("Condition value is not known: " + condition);
         }

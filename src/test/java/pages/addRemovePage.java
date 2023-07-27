@@ -14,7 +14,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Random;
 
-public class addRemovePage  extends baseSeleniumPage {
+public class addRemovePage extends baseSeleniumPage {
 
     private final Logger logger = LogManager.getLogger(addRemovePage.class);
 

@@ -3,6 +3,8 @@ package pages;
 import core.baseSeleniumPage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.HasAuthentication;
+import org.openqa.selenium.UsernameAndPassword;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -22,6 +24,8 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
     @FindBy(xpath = "//a[@href='/add_remove_elements/']")  //Add/Remove Elements Page
     private WebElement addRemovePage;                      //происходит инициализация данного элемента, когда мы к нему обращаемся
 
+    @FindBy(xpath = "//a[@href='/basic_auth']")  //Basic Auth (user and pass: admin)
+    private WebElement basicAuthPage;                      //происходит инициализация данного элемента, когда мы к нему обращаемся
 
 
     @FindBy(xpath = "//a[@href='/javascript_alerts']")  //JavaScript Alerts page
@@ -43,12 +47,23 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
         return new abTestPage();
     }
 
-    /*необходимо открыть страницу abTestPage*/
-    public addRemovePage addRemovePage(){
+    /*необходимо открыть страницу addRemovePage*/
+    public addRemovePage openaddRemovePage(){
         addRemovePage.click();
         logger.info("addRemovePage is open");
         return new addRemovePage();
     }
+
+    /*необходимо открыть страницу addRemovePage*/
+    public basicAuthPage openbasicAuthPage(){
+        HasAuthentication authentication = (HasAuthentication) driver;
+        authentication.register(()->new UsernameAndPassword(ConfigProvider.USER_LOGIN,ConfigProvider.USER_PASS));
+        driver.get("https://the-internet.herokuapp.com/basic_auth");
+        logger.info("basicAuthPage is open");
+        return new basicAuthPage();
+    }
+
+
 
 
 

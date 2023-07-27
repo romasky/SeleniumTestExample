@@ -13,7 +13,7 @@ public class addRemoveTest extends baseSeleniumTest {
     @Test
     public void testPositiveCheckDeleteButtonAppears() {
         addRemovePage addRemovePage = new mainPage()
-                .addRemovePage();
+                .openaddRemovePage();
         addRemovePage.clickAddElementButton();
 
         assertions.deleteButtonAppearsNTimes(addRemovePage);
@@ -25,7 +25,7 @@ public class addRemoveTest extends baseSeleniumTest {
     @Test
     public void testPositiveCheckDeleteButtonsDisappear() {
         addRemovePage addRemovePage = new mainPage()
-                .addRemovePage();
+                .openaddRemovePage();
         addRemovePage.deleteButtonAppears();
 
         assertions.zeroListSize(addRemovePage);

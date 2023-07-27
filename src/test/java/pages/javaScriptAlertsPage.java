@@ -1,12 +1,11 @@
 package pages;
 
 import core.baseSeleniumPage;
+import helpers.alertHelpers;
 import helpers.testValues;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Alert;
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -40,39 +39,6 @@ public class javaScriptAlertsPage extends baseSeleniumPage {
 
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
-    public void alertHandler(WebDriver driver) {  // Переключаемся на алерт
-
-        try {
-            this.alert = driver.switchTo().alert();
-        } catch (NoAlertPresentException e) {
-            // Обработка случая, когда алерт отсутствует
-            this.alert = null;
-            System.out.println("Alert is null");
-        }
-    }
-
-    public String getAlertText() {   // Получаем текст из алерта
-        alertHandler(driver);
-        return alert.getText();
-    }
-
-    public void acceptAlert() {   // Принимаем алерт
-        alert.accept();
-        driver.switchTo().defaultContent();
-    }
-
-    public void dismissAlert() {  // Отклоняем алерт
-        alert.dismiss();
-        driver.switchTo().defaultContent();
-    }
-
-    public void sendKeysToAlert(String text) {   // Вводим текст в поле ввода алерта
-        alert.sendKeys(text);
-    }
-
-
-/*Создадим методы, которые будут открывать simple, confirm, prompt alerts*/
-
     /*Open Alerts*/
 
     public void openAlert(String type) {
@@ -91,7 +57,7 @@ public class javaScriptAlertsPage extends baseSeleniumPage {
         }
 
         wait.until(ExpectedConditions.alertIsPresent());
-        alertHandler(driver);
+        alertHelpers.alertHandler(driver);
         logger.info("Alert " +type+ " is open");
     }
 
@@ -114,7 +80,7 @@ public class javaScriptAlertsPage extends baseSeleniumPage {
         }
 
         wait.until(ExpectedConditions.alertIsPresent());
-        alertHandler(driver);
+        alertHelpers.alertHandler(driver);
         logger.info("Alert " +type+ " is open");
     }
 
@@ -126,37 +92,37 @@ public class javaScriptAlertsPage extends baseSeleniumPage {
                 jsAlertButton.click();
                 wait.until(ExpectedConditions.alertIsPresent());
                 logger.info("Simple Alert is open");
-                alertHandler(driver);
-                acceptAlert();
+                alertHelpers.alertHandler(driver);
+                alertHelpers.acceptAlert(driver);
                 break;
             case "confirmok":
                 jsConfirmAlertButton.click();
                 wait.until(ExpectedConditions.alertIsPresent());
                 logger.info("Confirm Alert is open");
-                alertHandler(driver);
-                acceptAlert();
+                alertHelpers.alertHandler(driver);
+                alertHelpers.acceptAlert(driver);
                 break;
             case "confirmcancel":
                 jsConfirmAlertButton.click();
                 wait.until(ExpectedConditions.alertIsPresent());
                 logger.info("Confirm Alert is open");
-                alertHandler(driver);
-                dismissAlert();
+                alertHelpers.alertHandler(driver);
+                alertHelpers.dismissAlert(driver);
                 break;
             case "promptok":
                 jsPromptAlertButton.click();
                 wait.until(ExpectedConditions.alertIsPresent());
                 logger.info("Confirm Alert is open");
-                alertHandler(driver);
-                sendKeysToAlert(testValues.JSALERT_PROMPT_TEXT_RESULT_ENTER);
-                acceptAlert();
+                alertHelpers.alertHandler(driver);
+                alertHelpers.sendKeysToAlert(testValues.JSALERT_PROMPT_TEXT_RESULT_ENTER);
+                alertHelpers.acceptAlert(driver);
                 break;
             case "promptcancel":
                 jsPromptAlertButton.click();
                 wait.until(ExpectedConditions.alertIsPresent());
                 logger.info("Confirm Alert is open");
-                alertHandler(driver);
-                dismissAlert();
+                alertHelpers.alertHandler(driver);
+                alertHelpers.dismissAlert(driver);
                 break;
             default:
                 throw new IllegalArgumentException("Invalid alert type: " + type);
