@@ -40,7 +40,7 @@ abstract public class baseSeleniumTest {
     }
 
 
-    /*@AfterEach
+    @AfterEach
     public void tearDown() {
         try {
             Alert alert = driver.switchTo().alert();
@@ -55,6 +55,6 @@ abstract public class baseSeleniumTest {
         }
 
         logger.info("Driver is quit");
-    }*/
+    }
 
 }

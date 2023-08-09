@@ -30,6 +30,9 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
     @FindBy(xpath = "//a[@href='/broken_images']")  //Basic Auth (user and pass: admin)
     private WebElement brokenImages;
 
+    @FindBy(xpath = "//a[@href='/challenging_dom']")  //Challenging DOM
+    private WebElement challengingDOM;
+
 
 
 
@@ -73,6 +76,13 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
         brokenImages.click();
         logger.info("brokenImagesPage is open");
         return new brokenImagesPage();
+    }
+
+    /*необходимо открыть страницу addRemovePage*/
+    public challengingDOMPage openchallengingDOMPage(){
+        challengingDOM.click();
+        logger.info("challengingDOMPage is open");
+        return new challengingDOMPage();
     }
 
 

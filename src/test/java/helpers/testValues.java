@@ -1,5 +1,8 @@
 package helpers;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class testValues {
 
     /*A/B Testing*/
@@ -13,6 +16,22 @@ public class testValues {
     final public static String BAT_NOT_AUTH_TEXT = "Not authorized";
     final public static String BAT_TITLE_TEXT = "Basic Auth";
     final public static String BAT_BODY_TEXT = "Congratulations! You must have the proper credentials.";
+
+
+    /*Challenging DOM Test*/
+    final public static int CDOM_BUTTONS_LIST_SIZE = 3;
+    final public static String CDOM_HEADER_TEXT = "Challenging DOM";
+    final public static String CDOM_BODY_TEXT = "The hardest part in automated web testing is finding the best locators (e.g., ones that well named, unique, and unlikely to change). It's more often than not that the application you're testing was not built with this concept in mind. This example demonstrates that with unique IDs, a table with no helpful locators, and a canvas element.";
+    public static final List<String> CDOM_TABLE_HEADERS = Arrays.asList("Lorem", "Ipsum", "Dolor", "Sit", "Amet", "Diceret", "Action");
+    final public static int CDOM_TABLE_LIST_ROWS_SIZE = 10;
+    final public static String CDOM_EDIT_LINK = "https://the-internet.herokuapp.com/challenging_dom#edit";
+    final public static String CDOM_DELETE_LINK = "https://the-internet.herokuapp.com/challenging_dom#delete";
+    final public static String CDOM_CANVAS_WIDTH = "599";
+    final public static String CDOM_CANVAS_HEIGHT = "200";
+    final public static String CDOM_CANVAS_STYLE = "border: 1px dotted;";
+
+
+
 
 
 

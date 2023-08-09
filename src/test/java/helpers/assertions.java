@@ -46,12 +46,12 @@ public class assertions {
     }
 
     public static void deleteButtonAppearsNTimes(addRemovePage addRemovePage) {
-        Assertions.assertTrue(addRemovePage.countDeleteButtons()==addRemovePage.n);
+        Assertions.assertEquals(addRemovePage.countDeleteButtons(), addRemovePage.n);
         logger.info("Delete button appeared "+addRemovePage.n+" times");
     }
 
     public static void zeroListSize(addRemovePage addRemovePage) {
-        Assertions.assertTrue(addRemovePage.countDeleteButtons()==0);
+        Assertions.assertEquals(0, addRemovePage.countDeleteButtons());
         logger.info("Delete button appeared and closed "+addRemovePage.n+" times");
     }
 
@@ -68,10 +68,31 @@ public class assertions {
             } else {
                 logger.info(img.getAttribute("outerHTML") + " link exists.");
             }
-
         }
+    }
+
+    public static void integerCompare(int expectedValue, int actualValue) {
+        Assertions.assertEquals(expectedValue, actualValue,"int value is not equal to expectedValue " + expectedValue);
+        logger.info("Ints are equals");
+    }
+
+    public static void BooleanCompare(boolean expectedValue, boolean actualValue) {
+        Assertions.assertEquals(expectedValue, actualValue,"Boolean value is not equal to expectedValue " + expectedValue);
+        logger.info("Boolean is equals");
+    }
+
+    public static void StringListCompare(List<String> expectedValue, List<String> actualValue) {
+        Assertions.assertEquals(expectedValue, actualValue,"List value is not equal to expectedValue " + expectedValue);
+        logger.info("Lists are equals");
+    }
 
 
+    public static void checkNotNullListItems(List<String> list) {
+        Assertions.assertNotNull(list, "List is null");
+        for (String item : list) {
+            Assertions.assertNotNull(item, "Found null item in the list");
+        }
+        logger.info("All items in the list are not null.");
     }
 
 

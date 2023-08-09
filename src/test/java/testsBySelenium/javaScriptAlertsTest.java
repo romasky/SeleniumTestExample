@@ -4,6 +4,11 @@ import core.baseSeleniumTest;
 import helpers.alertHelpers;
 import helpers.assertions;
 import helpers.testValues;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import pages.javaScriptAlertsPage;
@@ -12,7 +17,10 @@ import pages.mainPage;
 public class javaScriptAlertsTest extends baseSeleniumTest {
 
     /*Open Alerts*/
-
+    @Description("This test successfully checks opening an alerts")
+    @Epic("Positive test")
+    @DisplayName("Test positive opening an alerts")
+    @Severity(SeverityLevel.MINOR)
     @ParameterizedTest
     @ValueSource(strings = {"simple", "confirm", "prompt"})
     public void testPositiveAlertOpen(String condition) {
@@ -38,7 +46,10 @@ public class javaScriptAlertsTest extends baseSeleniumTest {
     }
 
     /*Check Alerts Text*/
-
+    @Description("This test successfully checks text on the alerts")
+    @Epic("Positive test")
+    @DisplayName("Test positive text on alerts")
+    @Severity(SeverityLevel.MINOR)
     @ParameterizedTest
     @ValueSource(strings = {"simple", "confirm", "prompt"})
     public void testPositiveAlertCheckText(String condition) {
@@ -64,7 +75,10 @@ public class javaScriptAlertsTest extends baseSeleniumTest {
     }
 
     /*Check Alerts Text Result*/
-
+    @Description("This test successfully checks text onthe page Result")
+    @Epic("Positive test")
+    @DisplayName("Test positive text Result")
+    @Severity(SeverityLevel.MINOR)
     @ParameterizedTest
     @ValueSource(strings = {"simpleok", "confirmok", "confirmcancel","promptok", "promptcancel"})
     public void testPositiveAlertCheckTextResult(String condition) {

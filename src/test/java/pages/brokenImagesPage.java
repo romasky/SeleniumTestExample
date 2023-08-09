@@ -3,7 +3,6 @@ package pages;
 import core.baseSeleniumPage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
@@ -12,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 import java.util.Random;
 
-public class brokenImagesPage  extends baseSeleniumPage {
+public class brokenImagesPage extends baseSeleniumPage {
 
     private final Logger logger = LogManager.getLogger(brokenImagesPage.class);
 
