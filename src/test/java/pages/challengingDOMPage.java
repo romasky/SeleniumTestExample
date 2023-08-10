@@ -1,18 +1,13 @@
 package pages;
 
 import core.baseSeleniumPage;
-import helpers.alertHelpers;
-import helpers.pageHandlers;
-import helpers.testValues;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -193,10 +188,4 @@ public class challengingDOMPage extends baseSeleniumPage {
                 throw new IllegalArgumentException("Unsupported attribute: " + attribute);
         }
     }
-
-
-
-
-
-
 }

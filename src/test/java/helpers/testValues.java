@@ -6,7 +6,6 @@ import java.util.List;
 public class testValues {
 
     /*A/B Testing*/
-
     final public static String AB_TITLE = "A/B Test Variation 1";
     final public static String AB_TITLE_2 = "A/B Test Control";
     final public static String AB_DESCRIPTION = "Also known as split testing. This is a way in which businesses are able to simultaneously test and learn different versions of a page to see which text and/or functionality works best towards a desired outcome (e.g. a user action such as a click-through).";
@@ -29,6 +28,14 @@ public class testValues {
     final public static String CDOM_CANVAS_WIDTH = "599";
     final public static String CDOM_CANVAS_HEIGHT = "200";
     final public static String CDOM_CANVAS_STYLE = "border: 1px dotted;";
+
+
+    /*CheckboxesTest Test*/
+    final public static String CHBX_HEADER_TEXT = "Checkboxes";
+    final public static int CHBX_NUMBER_OF_CHECKBOXES = 2;
+    final public static String CHBX_NAME_FIRST_CHECKBOX = "checkbox 1";
+    final public static String CHBX_NAME_SECOND_CHECKBOX = "checkbox 2";
+
 
 
 

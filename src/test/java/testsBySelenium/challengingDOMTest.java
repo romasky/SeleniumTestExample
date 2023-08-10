@@ -1,7 +1,6 @@
 package testsBySelenium;
 
 import core.baseSeleniumTest;
-import helpers.alertHelpers;
 import helpers.assertions;
 import helpers.testValues;
 import org.junit.jupiter.api.DisplayName;
@@ -61,17 +60,16 @@ public class challengingDOMTest extends baseSeleniumTest {
                 .openchallengingDOMPage();
 
         if(condition.equals("blue")) {
-            assertions.BooleanCompare(true,challengingDOMPage.checkButtonAttributeIdIsDifferent("blue"));
+            assertions.BooleanCompare(true,challengingDOMPage.checkButtonAttributeIdIsDifferent(condition));
         } else if(condition.equals("red")) {
-            assertions.BooleanCompare(true,challengingDOMPage.checkButtonAttributeIdIsDifferent("red"));
+            assertions.BooleanCompare(true,challengingDOMPage.checkButtonAttributeIdIsDifferent(condition));
         }
         else if(condition.equals("green")) {
-            assertions.BooleanCompare(true,challengingDOMPage.checkButtonAttributeIdIsDifferent("green"));
+            assertions.BooleanCompare(true,challengingDOMPage.checkButtonAttributeIdIsDifferent(condition));
         } else {
             throw new IllegalArgumentException("Condition value is not known: " + condition);
         }
     }
-
 
     @Description("This test successfully checks static headers of the table")
     @Epic("Positive test")
@@ -96,7 +94,6 @@ public class challengingDOMTest extends baseSeleniumTest {
 
         assertions.integerCompare(testValues.CDOM_TABLE_LIST_ROWS_SIZE,challengingDOMPage.getListOfTableRowsSize());
     }
-
 
     @Description("This test successfully checks list of table cells")
     @Epic("Positive test")
@@ -168,8 +165,4 @@ public class challengingDOMTest extends baseSeleniumTest {
             throw new IllegalArgumentException("Condition value is not known: " + condition);
         }
     }
-
-
-
-
 }

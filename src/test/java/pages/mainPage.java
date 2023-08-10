@@ -31,7 +31,10 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
     private WebElement brokenImages;
 
     @FindBy(xpath = "//a[@href='/challenging_dom']")  //Challenging DOM
-    private WebElement challengingDOM;
+    private WebElement challengingDOMPage;
+
+    @FindBy(xpath = "//a[@href='/checkboxes']")  //Checkboxes
+    private WebElement CheckboxesPage;
 
 
 
@@ -80,9 +83,16 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
 
     /*необходимо открыть страницу addRemovePage*/
     public challengingDOMPage openchallengingDOMPage(){
-        challengingDOM.click();
+        challengingDOMPage.click();
         logger.info("challengingDOMPage is open");
         return new challengingDOMPage();
+    }
+
+    /*необходимо открыть страницу addRemovePage*/
+    public checkboxesPage opencheckboxesPage(){
+        CheckboxesPage.click();
+        logger.info("CheckboxesPage is open");
+        return new checkboxesPage();
     }
 
 

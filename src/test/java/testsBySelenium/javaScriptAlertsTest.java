@@ -88,23 +88,23 @@ public class javaScriptAlertsTest extends baseSeleniumTest {
 
         if(condition.equals("simpleok")) {
 
-            assertions.textCompare(testValues.JSALERT_OK_TEXT_RESULT,javaScriptAlertsPage.checkAlertsTextResult("simpleok"));
+            assertions.textCompare(testValues.JSALERT_OK_TEXT_RESULT,javaScriptAlertsPage.checkAlertsTextResult(condition));
         } else if(condition.equals("confirmok")) {
 
-            assertions.textCompare(testValues.JSALERT_CONFIRM_OK_TEXT_RESULT,javaScriptAlertsPage.checkAlertsTextResult("confirmok"));
+            assertions.textCompare(testValues.JSALERT_CONFIRM_OK_TEXT_RESULT,javaScriptAlertsPage.checkAlertsTextResult(condition));
         }
         else if(condition.equals("confirmcancel")) {
 
-            assertions.textCompare(testValues.JSALERT_CONFIRM_CANCEL_TEXT_RESULT,javaScriptAlertsPage.checkAlertsTextResult("confirmcancel"));
+            assertions.textCompare(testValues.JSALERT_CONFIRM_CANCEL_TEXT_RESULT,javaScriptAlertsPage.checkAlertsTextResult(condition));
         }
         else if(condition.equals("promptok")) {
 
-            assertions.textCompare(testValues.JSALERT_PROMPT_TEXT_RESULT_START+testValues.JSALERT_PROMPT_TEXT_RESULT_ENTER,javaScriptAlertsPage.checkAlertsTextResult("promptok"));
+            assertions.textCompare(testValues.JSALERT_PROMPT_TEXT_RESULT_START+testValues.JSALERT_PROMPT_TEXT_RESULT_ENTER,javaScriptAlertsPage.checkAlertsTextResult(condition));
 
         }
         else if(condition.equals("promptcancel")) {
 
-            assertions.textCompare(testValues.JSALERT_PROMPT_TEXT_RESULT_START+testValues.JSALERT_PROMPT_TEXT_RESULT_NOENTER,javaScriptAlertsPage.checkAlertsTextResult("promptcancel"));
+            assertions.textCompare(testValues.JSALERT_PROMPT_TEXT_RESULT_START+testValues.JSALERT_PROMPT_TEXT_RESULT_NOENTER,javaScriptAlertsPage.checkAlertsTextResult(condition));
         } else {
             throw new IllegalArgumentException("Condition value is not known: " + condition);
         }

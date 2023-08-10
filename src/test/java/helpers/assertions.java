@@ -95,6 +95,11 @@ public class assertions {
         logger.info("All items in the list are not null.");
     }
 
+    public static void checkAttribute(String expectedValue, String attrubite) {
+        Assertions.assertEquals(expectedValue, attrubite);
+        logger.info("Attribute checked successfully");
+    }
+
 
 
 }
