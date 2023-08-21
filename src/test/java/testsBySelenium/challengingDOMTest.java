@@ -20,7 +20,7 @@ public class challengingDOMTest extends baseSeleniumTest {
     @Test
     public void testPositiveCheckListOfButtonsSize() {
         challengingDOMPage challengingDOMPage = new mainPage()
-                .openchallengingDOMPage();
+                .openChallengingDOMPage();
 
         assertions.integerCompare(testValues.CDOM_BUTTONS_LIST_SIZE,challengingDOMPage.getListOfButtonsSize());
     }
@@ -32,7 +32,7 @@ public class challengingDOMTest extends baseSeleniumTest {
     @Test
     public void testPositiveCheckHeaderText() {
         challengingDOMPage challengingDOMPage = new mainPage()
-                .openchallengingDOMPage();
+                .openChallengingDOMPage();
 
         assertions.textCompare(testValues.CDOM_HEADER_TEXT,challengingDOMPage.getHeaderText());
     }
@@ -44,7 +44,7 @@ public class challengingDOMTest extends baseSeleniumTest {
     @Test
     public void testPositiveCheckBodyText() {
         challengingDOMPage challengingDOMPage = new mainPage()
-                .openchallengingDOMPage();
+                .openChallengingDOMPage();
 
         assertions.textCompare(testValues.CDOM_BODY_TEXT,challengingDOMPage.getBodyText());
     }
@@ -57,7 +57,7 @@ public class challengingDOMTest extends baseSeleniumTest {
     @ValueSource(strings = {"blue", "red", "green"})
     public void testPositiveCheckBlueButton(String condition) {
         challengingDOMPage challengingDOMPage = new mainPage()
-                .openchallengingDOMPage();
+                .openChallengingDOMPage();
 
         if(condition.equals("blue")) {
             assertions.BooleanCompare(true,challengingDOMPage.checkButtonAttributeIdIsDifferent(condition));
@@ -78,7 +78,7 @@ public class challengingDOMTest extends baseSeleniumTest {
     @Test
     public void testPositiveCheckTableHeaders() {
         challengingDOMPage challengingDOMPage = new mainPage()
-                .openchallengingDOMPage();
+                .openChallengingDOMPage();
 
         assertions.StringListCompare(testValues.CDOM_TABLE_HEADERS,challengingDOMPage.getTableHeadersList());
     }
@@ -90,7 +90,7 @@ public class challengingDOMTest extends baseSeleniumTest {
     @Test
     public void testPositiveCheckListOfTableRowSize() {
         challengingDOMPage challengingDOMPage = new mainPage()
-                .openchallengingDOMPage();
+                .openChallengingDOMPage();
 
         assertions.integerCompare(testValues.CDOM_TABLE_LIST_ROWS_SIZE,challengingDOMPage.getListOfTableRowsSize());
     }
@@ -102,7 +102,7 @@ public class challengingDOMTest extends baseSeleniumTest {
     @Test
     public void testPositiveCheckListOfTableCells() {
         challengingDOMPage challengingDOMPage = new mainPage()
-                .openchallengingDOMPage();
+                .openChallengingDOMPage();
 
         assertions.checkNotNullListItems(challengingDOMPage.getTableCellsItemsList());
     }
@@ -114,7 +114,7 @@ public class challengingDOMTest extends baseSeleniumTest {
     @Test
     public void testPositiveCheckUrlAfterEditButton() {
         challengingDOMPage challengingDOMPage = new mainPage()
-                .openchallengingDOMPage();
+                .openChallengingDOMPage();
 
         assertions.textCompare(testValues.CDOM_EDIT_LINK, challengingDOMPage.checkButtonEdit());
     }
@@ -126,7 +126,7 @@ public class challengingDOMTest extends baseSeleniumTest {
     @Test
     public void testPositiveCheckUrlAfterDeleteButton() {
         challengingDOMPage challengingDOMPage = new mainPage()
-                .openchallengingDOMPage();
+                .openChallengingDOMPage();
 
         assertions.textCompare(testValues.CDOM_DELETE_LINK, challengingDOMPage.checkDeleteButtonEdit());
     }
@@ -138,7 +138,7 @@ public class challengingDOMTest extends baseSeleniumTest {
     @Test
     public void testPositiveCheckCanvasNumbersAfterRefresh() {
         challengingDOMPage challengingDOMPage = new mainPage()
-                .openchallengingDOMPage();
+                .openChallengingDOMPage();
 
         assertions.BooleanCompare(true, challengingDOMPage.checkNumberIsDifferentAfterRefresh());
     }
@@ -152,7 +152,7 @@ public class challengingDOMTest extends baseSeleniumTest {
     @ValueSource(strings = {"width", "height", "style"})
     public void testPositiveCheckCanvasAttribute(String condition) {
         challengingDOMPage challengingDOMPage = new mainPage()
-                .openchallengingDOMPage();
+                .openChallengingDOMPage();
 
         if(condition.equals("width")) {
             assertions.textCompare(testValues.CDOM_CANVAS_WIDTH,challengingDOMPage.getCanvasAttribute("width"));

@@ -36,6 +36,9 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
     @FindBy(xpath = "//a[@href='/checkboxes']")  //Checkboxes
     private WebElement CheckboxesPage;
 
+    @FindBy(xpath = "//a[@href='/context_menu']")  //Checkboxes
+    private WebElement contextMenuPage;
+
 
 
 
@@ -65,35 +68,45 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
         return new addRemovePage();
     }
 
-    /*необходимо открыть страницу addRemovePage*/
+    /*необходимо открыть страницу openbasicAuthPage*/
     public basicAuthPage openbasicAuthPage(){
         HasAuthentication authentication = (HasAuthentication) driver;
         authentication.register(()->new UsernameAndPassword(ConfigProvider.USER_LOGIN,ConfigProvider.USER_PASS));
-        driver.get("https://the-internet.herokuapp.com/basic_auth");
+        driver.get(ConfigProvider.URL+ConfigProvider.BASIC_AUTH);
         logger.info("basicAuthPage is open");
         return new basicAuthPage();
     }
 
-    /*необходимо открыть страницу addRemovePage*/
+    /*необходимо открыть страницу BrokenImagesPage*/
     public brokenImagesPage openBrokenImagesPage(){
         brokenImages.click();
         logger.info("brokenImagesPage is open");
         return new brokenImagesPage();
     }
 
-    /*необходимо открыть страницу addRemovePage*/
-    public challengingDOMPage openchallengingDOMPage(){
+    /*необходимо открыть страницу ChallengingDOMPage*/
+    public challengingDOMPage openChallengingDOMPage(){
         challengingDOMPage.click();
         logger.info("challengingDOMPage is open");
         return new challengingDOMPage();
     }
 
-    /*необходимо открыть страницу addRemovePage*/
-    public checkboxesPage opencheckboxesPage(){
+    /*необходимо открыть страницу CheckboxesPage*/
+    public checkboxesPage openCheckboxesPage(){
         CheckboxesPage.click();
-        logger.info("CheckboxesPage is open");
+        logger.info("Checkboxes Page is open");
         return new checkboxesPage();
     }
+
+    /*необходимо открыть страницу ContextMenuPage*/
+    public contextMenuPage openContextMenuPage(){
+        contextMenuPage.click();
+        logger.info("context Menu Page is open");
+        return new contextMenuPage();
+    }
+
+
+
 
 
 

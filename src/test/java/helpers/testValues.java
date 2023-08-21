@@ -37,6 +37,14 @@ public class testValues {
     final public static String CHBX_NAME_SECOND_CHECKBOX = "checkbox 2";
 
 
+    /*ContextMenuTest Test*/
+    final public static String CM_HEADER = "Context Menu";
+    final public static String CM_FIRST_TEXT = "Context menu items are custom additions that appear in the right-click menu.";
+    final public static String CM_SECOND_TEXT = "Right-click in the box below to see one called 'the-internet'. When you click it, it will trigger a JavaScript alert.";
+    final public static String CM_ALERT_TEXT = "You selected a context menu";
+
+
+
 
 
 

@@ -24,7 +24,7 @@ public class checkboxesTest extends baseSeleniumTest {
     @Test
     public void testPositiveCheckHeaderText() {
         checkboxesPage checkboxesPage = new mainPage()
-                .opencheckboxesPage();
+                .openCheckboxesPage();
          assertions.textCompare(testValues.CHBX_HEADER_TEXT,checkboxesPage.getHeaderText());
     }
 
@@ -36,7 +36,7 @@ public class checkboxesTest extends baseSeleniumTest {
     @ValueSource(ints = {0, 1})
     public void testPositiveNamesOfCheckboxes(int condition) {
         checkboxesPage checkboxesPage = new mainPage()
-                .opencheckboxesPage();
+                .openCheckboxesPage();
         if(condition==0) {
             assertions.textCompare(testValues.CHBX_NAME_FIRST_CHECKBOX,checkboxesPage.getCheckboxNames(condition));
         } else if(condition==1) {
@@ -54,7 +54,7 @@ public class checkboxesTest extends baseSeleniumTest {
     @ValueSource(strings = {"first", "second"})
     public void testPositiveCheckboxesBeforeClick(String condition) {
         checkboxesPage checkboxesPage = new mainPage()
-                .opencheckboxesPage();
+                .openCheckboxesPage();
         if(condition.equals("first")) {
             assertions.checkAttribute(null,checkboxesPage.getAttributeBeforeClick(condition));
         } else if(condition.equals("second")) {
@@ -72,7 +72,7 @@ public class checkboxesTest extends baseSeleniumTest {
     @ValueSource(strings = {"first", "second"})
     public void testPositiveCheckboxesAfterClick(String condition) {
         checkboxesPage checkboxesPage = new mainPage()
-                .opencheckboxesPage();
+                .openCheckboxesPage();
         if(condition.equals("first")) {
             assertions.checkAttribute("true",checkboxesPage.getAttributeAfterClick(condition));
         } else if(condition.equals("second")) {
@@ -89,7 +89,7 @@ public class checkboxesTest extends baseSeleniumTest {
     @Test
     public void testPositiveCheckNumberOfCheckboxes() {
         checkboxesPage checkboxesPage = new mainPage()
-                .opencheckboxesPage();
+                .openCheckboxesPage();
         assertions.integerCompare(testValues.CHBX_NUMBER_OF_CHECKBOXES,checkboxesPage.numberOfCheckboxes());
     }
 

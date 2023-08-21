@@ -14,6 +14,7 @@ public interface ConfigProvider {
     }
 
     String URL = readConfig().getString("url");
+    String BASIC_AUTH = readConfig().getString("basic_auth");
     String USER_LOGIN = readConfig().getString("usersParams.user.login");
     String USER_PASS = readConfig().getString("usersParams.user.password");
 
