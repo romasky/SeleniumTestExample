@@ -10,10 +10,10 @@ import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.basicAuthPage;
+import pages.digestAuthenticationPage;
 import pages.mainPage;
 
-public class basicAuthTest extends baseSeleniumTest {
-
+public class digestAuthenticationTest  extends baseSeleniumTest {
 
     /*Open Basic Auth Page*/
     @Description("This test successfully checks login with basic auth on the page")
@@ -21,11 +21,12 @@ public class basicAuthTest extends baseSeleniumTest {
     @DisplayName("Test positive login on the page")
     @Severity(SeverityLevel.CRITICAL)
     @Test
-    public void testPositiveSuccessfullyloginViaAlert() {
-        basicAuthPage basicAuthPage = new mainPage()
-                .openbasicAuthPage();
+    public void testPositiveSuccessfullylogin() {
+        digestAuthenticationPage digestAuthenticationPage = new mainPage()
+                .digestAuthenticationPage();
 
-        assertions.textCompare(testValues.BAT_TITLE_TEXT, basicAuthPage.getTextFromPage("titleAuthText"));
-        assertions.textCompare(testValues.BAT_BODY_TEXT, basicAuthPage.getTextFromPage("bodyAuthText"));
+        assertions.textCompare(testValues.DA_HEADER, digestAuthenticationPage.getTextFromPage("titleAuthText"));
+        assertions.textCompare(testValues.DA_TEXT, digestAuthenticationPage.getTextFromPage("bodyAuthText"));
     }
+
 }

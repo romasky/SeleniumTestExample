@@ -39,6 +39,9 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
     @FindBy(xpath = "//a[@href='/context_menu']")  //Checkboxes
     private WebElement contextMenuPage;
 
+    @FindBy(xpath = "//a[@href='/digest_auth']")  //Checkboxes
+    private WebElement digestAuthenticationPage;
+
 
 
 
@@ -105,6 +108,14 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
         return new contextMenuPage();
     }
 
+    /*необходимо открыть страницу ContextMenuPage*/
+    public digestAuthenticationPage digestAuthenticationPage(){
+        HasAuthentication authentication = (HasAuthentication) driver;
+        authentication.register(()->new UsernameAndPassword(ConfigProvider.USER_LOGIN,ConfigProvider.USER_PASS));
+        driver.get(ConfigProvider.URL+ConfigProvider.DIGEST_AUTH);
+        logger.info("digestAuthenticationPage is open");
+        return new digestAuthenticationPage();
+    }
 
 
 

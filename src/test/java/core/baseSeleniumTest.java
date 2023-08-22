@@ -18,6 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 
 abstract public class baseSeleniumTest {
+
     protected WebDriver driver;
     private final Logger logger = LogManager.getLogger(baseSeleniumTest.class);
     protected WebDriverWait wait;

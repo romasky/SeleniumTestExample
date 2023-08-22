@@ -44,6 +44,10 @@ public class testValues {
     final public static String CM_ALERT_TEXT = "You selected a context menu";
 
 
+    /*digestAuthenticationTest Test*/
+    final public static String DA_HEADER = "Digest Auth";
+    final public static String DA_TEXT = "Congratulations! You must have the proper credentials.";
+
 
 
 
