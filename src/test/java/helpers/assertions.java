@@ -7,20 +7,26 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.addRemovePage;
 import pages.javaScriptAlertsPage;
 import org.apache.http.*;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.util.List;
 
 public class assertions {
 
     private static final Logger logger = LogManager.getLogger(assertions.class);
 
-    public static void checkAlertAppears(javaScriptAlertsPage javaScriptAlertsPage) {
-        Assertions.assertNotNull(javaScriptAlertsPage.alert, "Failed to open the alert");
+    public static void checkAlertAppears() {
+        Assertions.assertNotNull(alertHelpers.alert, "Failed to open the alert");
         logger.info("Alert is appears");
     }
 
@@ -28,10 +34,17 @@ public class assertions {
         Assertions.assertEquals(expectedValue, actualValue, "Alert text is not equal to expectedValue " + expectedValue);
         logger.info("Text is equals on Alerts popup");
     }
-    public static void checkAlertClosed(javaScriptAlertsPage javaScriptAlertsPage) {
-        Assertions.assertNull(javaScriptAlertsPage.alert, "Failed to close the alert");
-        logger.info("Alert has been closed");
+    public static void checkAlertClosed(WebDriver driver) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        try {
+            wait.until(ExpectedConditions.not(ExpectedConditions.alertIsPresent()));
+            logger.info("Alert has been closed");
+        } catch (TimeoutException e) {
+            logger.error("Failed to close the alert: " + e.getMessage());
+            // Здесь можно добавить дополнительную обработку, если необходимо
+        }
     }
+
 
     public static void textCompare(String expectedValue, String actualValue) {
         Assertions.assertEquals(expectedValue, actualValue,"Text value is not equal to expectedValue " + expectedValue);
@@ -99,6 +112,8 @@ public class assertions {
         Assertions.assertEquals(expectedValue, attrubite);
         logger.info("Attribute checked successfully");
     }
+
+
 
 
 

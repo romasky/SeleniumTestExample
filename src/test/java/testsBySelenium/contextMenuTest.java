@@ -1,6 +1,7 @@
 package testsBySelenium;
 
 import core.baseSeleniumTest;
+import helpers.alertHelpers;
 import helpers.assertions;
 import helpers.testValues;
 import io.qameta.allure.Description;
@@ -58,13 +59,20 @@ public class contextMenuTest extends baseSeleniumTest {
         contextMenuPage contextMenuPage = new mainPage()
                 .openContextMenuPage();
 
-       /* contextMenuPage.getAlert();
-        assertions.checkAlertAppears(javaScriptAlertsPage);*/
+        contextMenuPage.openAlert();
+        assertions.checkAlertAppears();
     }
 
+    @Description("This test successfully checks text on the alerts")
+    @Epic("Positive test")
+    @DisplayName("Test positive text on alerts")
+    @Severity(SeverityLevel.MINOR)
+    @Test
+    public void testPositiveAlertCheckText() {
+        contextMenuPage contextMenuPage = new mainPage()
+                .openContextMenuPage();
 
-
-
-
-
+        contextMenuPage.openAlert();
+        assertions.checkAlertText(testValues.CM_ALERT_TEXT, alertHelpers.getAlertText(driver));
+    }
 }

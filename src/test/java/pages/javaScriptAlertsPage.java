@@ -6,6 +6,7 @@ import helpers.testValues;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -17,8 +18,6 @@ import java.time.Duration;
 public class javaScriptAlertsPage extends baseSeleniumPage {
 
     private final Logger logger = LogManager.getLogger(javaScriptAlertsPage.class);
-
-    public Alert alert;
 
     @FindBy(xpath = "//button[@onclick='jsAlert()']")
     private WebElement jsAlertButton;
@@ -43,17 +42,10 @@ public class javaScriptAlertsPage extends baseSeleniumPage {
 
     public void openAlert(String type) {
         switch (type.toLowerCase()) {
-            case "simple":
-                jsAlertButton.click();
-                break;
-            case "confirm":
-                jsConfirmAlertButton.click();
-                break;
-            case "prompt":
-                jsPromptAlertButton.click();
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid alert type: " + type);
+            case "simple" -> jsAlertButton.click();
+            case "confirm" -> jsConfirmAlertButton.click();
+            case "prompt" -> jsPromptAlertButton.click();
+            default -> throw new IllegalArgumentException("Invalid alert type: " + type);
         }
 
         wait.until(ExpectedConditions.alertIsPresent());
@@ -65,22 +57,13 @@ public class javaScriptAlertsPage extends baseSeleniumPage {
 
     public void checkAlertsText(String type) {
         switch (type.toLowerCase()) {
-            case "simple":
-                jsAlertButton.click();
-                break;
-            case "confirm":
-                jsConfirmAlertButton.click();
-                break;
-            case "prompt":
-                jsPromptAlertButton.click();
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid alert type: " + type);
-
+            case "simple" -> jsAlertButton.click();
+            case "confirm" -> jsConfirmAlertButton.click();
+            case "prompt" -> jsPromptAlertButton.click();
+            default -> throw new IllegalArgumentException("Invalid alert type: " + type);
         }
 
         wait.until(ExpectedConditions.alertIsPresent());
-        alertHelpers.alertHandler(driver);
         logger.info("Alert " +type+ " is open");
     }
 
@@ -92,42 +75,37 @@ public class javaScriptAlertsPage extends baseSeleniumPage {
                 jsAlertButton.click();
                 wait.until(ExpectedConditions.alertIsPresent());
                 logger.info("Simple Alert is open");
-                alertHelpers.alertHandler(driver);
                 alertHelpers.acceptAlert(driver);
                 break;
             case "confirmok":
                 jsConfirmAlertButton.click();
                 wait.until(ExpectedConditions.alertIsPresent());
                 logger.info("Confirm Alert is open");
-                alertHelpers.alertHandler(driver);
                 alertHelpers.acceptAlert(driver);
                 break;
             case "confirmcancel":
                 jsConfirmAlertButton.click();
                 wait.until(ExpectedConditions.alertIsPresent());
                 logger.info("Confirm Alert is open");
-                alertHelpers.alertHandler(driver);
                 alertHelpers.dismissAlert(driver);
                 break;
             case "promptok":
                 jsPromptAlertButton.click();
                 wait.until(ExpectedConditions.alertIsPresent());
                 logger.info("Confirm Alert is open");
-                alertHelpers.alertHandler(driver);
-                alertHelpers.sendKeysToAlert(testValues.JSALERT_PROMPT_TEXT_RESULT_ENTER);
+                alertHelpers.sendKeysToAlert(driver, testValues.JSALERT_PROMPT_TEXT_RESULT_ENTER);
                 alertHelpers.acceptAlert(driver);
                 break;
             case "promptcancel":
                 jsPromptAlertButton.click();
                 wait.until(ExpectedConditions.alertIsPresent());
                 logger.info("Confirm Alert is open");
-                alertHelpers.alertHandler(driver);
                 alertHelpers.dismissAlert(driver);
                 break;
             default:
                 throw new IllegalArgumentException("Invalid alert type: " + type);
         }
-        alert = null;
+
         return jsAlertResultText.getText();
     }
 }

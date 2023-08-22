@@ -11,8 +11,12 @@ import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.javaScriptAlertsPage;
 import pages.mainPage;
+
+import java.time.Duration;
 
 public class javaScriptAlertsTest extends baseSeleniumTest {
 
@@ -27,21 +31,20 @@ public class javaScriptAlertsTest extends baseSeleniumTest {
         javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
                 .openJSAlertsPage();
 
-        if(condition.equals("simple")) {
-
-            javaScriptAlertsPage.openAlert("simple");
-            assertions.checkAlertAppears(javaScriptAlertsPage);
-        } else if(condition.equals("confirm")) {
-
-            javaScriptAlertsPage.openAlert("confirm");
-            assertions.checkAlertAppears(javaScriptAlertsPage);
-        }
-        else if(condition.equals("prompt")) {
-
-            javaScriptAlertsPage.openAlert("prompt");
-            assertions.checkAlertAppears(javaScriptAlertsPage);
-        } else {
-            throw new IllegalArgumentException("Condition value is not known: " + condition);
+        switch (condition) {
+            case "simple" -> {
+                javaScriptAlertsPage.openAlert("simple");
+                assertions.checkAlertAppears();
+            }
+            case "confirm" -> {
+                javaScriptAlertsPage.openAlert("confirm");
+                assertions.checkAlertAppears();
+            }
+            case "prompt" -> {
+                javaScriptAlertsPage.openAlert("prompt");
+                assertions.checkAlertAppears();
+            }
+            default -> throw new IllegalArgumentException("Condition value is not known: " + condition);
         }
     }
 
@@ -56,26 +59,25 @@ public class javaScriptAlertsTest extends baseSeleniumTest {
         javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
                 .openJSAlertsPage();
 
-        if(condition.equals("simple")) {
-
-            javaScriptAlertsPage.checkAlertsText("simple");
-            assertions.checkAlertText(testValues.ALERT_TEXT_JSALERT, alertHelpers.getAlertText(driver));
-        } else if(condition.equals("confirm")) {
-
-            javaScriptAlertsPage.checkAlertsText("confirm");
-            assertions.checkAlertText(testValues.ALERT_TEXT_JSALERT_CONFIRM,alertHelpers.getAlertText(driver));
-        }
-        else if(condition.equals("prompt")) {
-
-            javaScriptAlertsPage.checkAlertsText("prompt");
-            assertions.checkAlertText(testValues.ALERT_TEXT_JSALERT_PROMPT,alertHelpers.getAlertText(driver));
-        } else {
-            throw new IllegalArgumentException("Condition value is not known: " + condition);
+        switch (condition) {
+            case "simple" -> {
+                javaScriptAlertsPage.checkAlertsText("simple");
+                assertions.checkAlertText(testValues.ALERT_TEXT_JSALERT, alertHelpers.getAlertText(driver));
+            }
+            case "confirm" -> {
+                javaScriptAlertsPage.checkAlertsText("confirm");
+                assertions.checkAlertText(testValues.ALERT_TEXT_JSALERT_CONFIRM, alertHelpers.getAlertText(driver));
+            }
+            case "prompt" -> {
+                javaScriptAlertsPage.checkAlertsText("prompt");
+                assertions.checkAlertText(testValues.ALERT_TEXT_JSALERT_PROMPT, alertHelpers.getAlertText(driver));
+            }
+            default -> throw new IllegalArgumentException("Condition value is not known: " + condition);
         }
     }
 
     /*Check Alerts Text Result*/
-    @Description("This test successfully checks text onthe page Result")
+    @Description("This test successfully checks text on the page Result")
     @Epic("Positive test")
     @DisplayName("Test positive text Result")
     @Severity(SeverityLevel.MINOR)
@@ -86,28 +88,24 @@ public class javaScriptAlertsTest extends baseSeleniumTest {
         javaScriptAlertsPage javaScriptAlertsPage = new mainPage()
                 .openJSAlertsPage();
 
-        if(condition.equals("simpleok")) {
-
-            assertions.textCompare(testValues.JSALERT_OK_TEXT_RESULT,javaScriptAlertsPage.checkAlertsTextResult(condition));
-        } else if(condition.equals("confirmok")) {
-
-            assertions.textCompare(testValues.JSALERT_CONFIRM_OK_TEXT_RESULT,javaScriptAlertsPage.checkAlertsTextResult(condition));
+        switch (condition) {
+            case "simpleok" -> {
+                assertions.textCompare(testValues.JSALERT_OK_TEXT_RESULT, javaScriptAlertsPage.checkAlertsTextResult(condition));
+                assertions.checkAlertClosed(driver); }
+            case "confirmok" -> {
+                    assertions.textCompare(testValues.JSALERT_CONFIRM_OK_TEXT_RESULT, javaScriptAlertsPage.checkAlertsTextResult(condition));
+                assertions.checkAlertClosed(driver); }
+            case "confirmcancel" -> {
+                    assertions.textCompare(testValues.JSALERT_CONFIRM_CANCEL_TEXT_RESULT, javaScriptAlertsPage.checkAlertsTextResult(condition));
+                assertions.checkAlertClosed(driver); }
+            case "promptok" -> {
+                    assertions.textCompare(testValues.JSALERT_PROMPT_TEXT_RESULT_START + testValues.JSALERT_PROMPT_TEXT_RESULT_ENTER, javaScriptAlertsPage.checkAlertsTextResult(condition));
+                    assertions.checkAlertClosed(driver); }
+            case "promptcancel" -> {
+                    assertions.textCompare(testValues.JSALERT_PROMPT_TEXT_RESULT_START + testValues.JSALERT_PROMPT_TEXT_RESULT_NOENTER, javaScriptAlertsPage.checkAlertsTextResult(condition));
+                assertions.checkAlertClosed(driver); }
+            default -> throw new IllegalArgumentException("Condition value is not known: " + condition);
         }
-        else if(condition.equals("confirmcancel")) {
 
-            assertions.textCompare(testValues.JSALERT_CONFIRM_CANCEL_TEXT_RESULT,javaScriptAlertsPage.checkAlertsTextResult(condition));
-        }
-        else if(condition.equals("promptok")) {
-
-            assertions.textCompare(testValues.JSALERT_PROMPT_TEXT_RESULT_START+testValues.JSALERT_PROMPT_TEXT_RESULT_ENTER,javaScriptAlertsPage.checkAlertsTextResult(condition));
-
-        }
-        else if(condition.equals("promptcancel")) {
-
-            assertions.textCompare(testValues.JSALERT_PROMPT_TEXT_RESULT_START+testValues.JSALERT_PROMPT_TEXT_RESULT_NOENTER,javaScriptAlertsPage.checkAlertsTextResult(condition));
-        } else {
-            throw new IllegalArgumentException("Condition value is not known: " + condition);
-        }
-        assertions.checkAlertClosed(javaScriptAlertsPage);
     }
 }

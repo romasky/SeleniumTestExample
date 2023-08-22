@@ -40,14 +40,9 @@ abstract public class baseSeleniumTest {
     }
 
 
-    @AfterEach
+  /*  @AfterEach
     public void tearDown() {
-        try {
-            Alert alert = driver.switchTo().alert();
-            alert.accept();
-        } catch (NoAlertPresentException e) {
-            // Алерт не найден, продолжаем
-        }
+
 
         if (driver != null) {
             //driver.close(); //Если вы хотите закрыть текущее окно браузера, но оставить сессию WebDriver активной (например, если вам нужно открыть новое окно или выполнить другие действия), то просто используйте метод close() без вызова quit()
@@ -55,6 +50,6 @@ abstract public class baseSeleniumTest {
         }
 
         logger.info("Driver is quit");
-    }
+    }*/
 
 }

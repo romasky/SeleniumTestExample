@@ -55,17 +55,10 @@ public class contextMenuPage extends baseSeleniumPage {
         }
     }
 
-
-    public void getAlert() {
+    public void openAlert() {
         actions.contextClick(hotSpot).perform();
         wait.until(ExpectedConditions.alertIsPresent());
         alertHelpers.alertHandler(driver);
         logger.info("Alert is open");
     }
-
-
-
-
-
-
 }
