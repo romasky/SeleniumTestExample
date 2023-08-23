@@ -38,10 +38,13 @@ public class basicAuthPage  extends baseSeleniumPage {
     public String getTextFromPage(String element) {
         switch (element) {
             case "bodyNotAuthText":
+                logger.info("Return body Not Auth Text");
                 return bodyNotAuthText.getText();
             case "titleAuthText":
+                logger.info("Return title Auth Text");
                 return titleAuthText.getText();
             case "bodyAuthText":
+                logger.info("Return body Auth Text");
                 return bodyAuthText.getText();
             default:
                 throw new IllegalArgumentException("Invalid alert type: " + element);

@@ -8,7 +8,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class digestAuthenticationPage extends baseSeleniumPage {
-    private final Logger logger = LogManager.getLogger(basicAuthPage.class);
+
+    private final Logger logger = LogManager.getLogger(digestAuthenticationPage.class);
 
 
     @FindBy(xpath = "//h3")

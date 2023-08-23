@@ -8,13 +8,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.javaScriptAlertsPage;
+
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
+
 
 
 abstract public class baseSeleniumTest {
@@ -41,7 +39,7 @@ abstract public class baseSeleniumTest {
     }
 
 
-  /*  @AfterEach
+    @AfterEach
     public void tearDown() {
 
 
@@ -51,6 +49,6 @@ abstract public class baseSeleniumTest {
         }
 
         logger.info("Driver is quit");
-    }*/
+    }
 
 }

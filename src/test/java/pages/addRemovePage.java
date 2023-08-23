@@ -18,8 +18,6 @@ public class addRemovePage extends baseSeleniumPage {
 
     private final Logger logger = LogManager.getLogger(addRemovePage.class);
 
-    public Alert alert;
-
     Random random = new Random();
     public int n = random.nextInt(10) + 1;
 

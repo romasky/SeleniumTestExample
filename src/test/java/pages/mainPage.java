@@ -36,11 +36,14 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
     @FindBy(xpath = "//a[@href='/checkboxes']")  //Checkboxes
     private WebElement CheckboxesPage;
 
-    @FindBy(xpath = "//a[@href='/context_menu']")  //Checkboxes
+    @FindBy(xpath = "//a[@href='/context_menu']")  //context Menu
     private WebElement contextMenuPage;
 
-    @FindBy(xpath = "//a[@href='/digest_auth']")  //Checkboxes
+    @FindBy(xpath = "//a[@href='/digest_auth']")  //digest Authentication
     private WebElement digestAuthenticationPage;
+
+    @FindBy(xpath = "//a[@href='/disappearing_elements']")  //Disappearing Elements
+    private WebElement disappearingElementsPage;
 
 
 
@@ -117,7 +120,12 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
         return new digestAuthenticationPage();
     }
 
-
+    /*необходимо открыть страницу disappearingElementsPage*/
+    public disappearingElementsPage opendisappearingElementsPage(){
+        disappearingElementsPage.click();
+        logger.info("disappearing Elements Page is open");
+        return new disappearingElementsPage();
+    }
 
 
 

@@ -14,8 +14,6 @@ import java.time.Duration;
 public class abTestPage extends baseSeleniumPage {
     private final Logger logger = LogManager.getLogger(abTestPage.class);
 
-    public Alert alert;
-
     @FindBy(xpath = "//h3")
     private WebElement abPageTitleText;
 
@@ -32,10 +30,12 @@ public class abTestPage extends baseSeleniumPage {
     /*Создадим методы, которые будут получать текст */
 
     public String getTitleText() {
+        logger.info("Get title text");
         return abPageTitleText.getText();
     }
 
     public String getBodyText() {
+        logger.info("Get body text");
         return abPageTextBody.getText();
     }
 

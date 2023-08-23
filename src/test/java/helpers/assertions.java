@@ -7,18 +7,17 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.addRemovePage;
-import pages.javaScriptAlertsPage;
 import org.apache.http.*;
 
 import java.io.IOException;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 public class assertions {
@@ -114,7 +113,19 @@ public class assertions {
     }
 
 
+    public static void checkButtons(List<String> expectedButtons, List<WebElement> buttons) {
+        List<String> actualButtonNames = new ArrayList<>();
+        for (WebElement button : buttons) {
+            actualButtonNames.add(button.getText()); // adding actual buttons from webpage
+        }
+        logger.info("Add actual buttons in the list");
+        for (String expectedButton : expectedButtons) {                         // Check that each expected button is present among the actual buttons
+            Assertions.assertTrue(actualButtonNames.contains(expectedButton),
+                    "The button is missing from the page: " + expectedButton);
+        }
 
+        logger.info("All expected buttons are present on the page and their number is as expected");
+    }
 
 
 }

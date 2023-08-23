@@ -1,7 +1,7 @@
 <Configuration monitorInterval="30">
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%highlight{[%d{HH:mm:ss.SSS}] | %-5p | %20.20t | %20.20c{1} | %m%n}"/>
+            <PatternLayout pattern="%highlight{[%d{HH:mm:ss.SSS}] | %-5p | %20.20t | %25.25c{1} | %m%n}"/>
         </Console>
         <File name="MyFile" fileName="logs.log">
             <PatternLayout>

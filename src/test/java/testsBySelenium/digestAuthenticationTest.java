@@ -13,7 +13,7 @@ import pages.basicAuthPage;
 import pages.digestAuthenticationPage;
 import pages.mainPage;
 
-public class digestAuthenticationTest  extends baseSeleniumTest {
+public class digestAuthenticationTest extends baseSeleniumTest {
 
     /*Open Basic Auth Page*/
     @Description("This test successfully checks login with basic auth on the page")
