@@ -62,6 +62,13 @@ public class testValues {
     final public static String DD_B = "B";
 
 
+    /*dropdownTest values*/
+    final public static String DDT_HEADER = "Dropdown List";
+    final public static String DDT_OPTION_1 = "Option 1";
+    final public static String DDT_OPTION_2 = "Option 2";
+
+
+
 
 
 

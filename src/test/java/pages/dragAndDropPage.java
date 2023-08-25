@@ -34,7 +34,7 @@ public class dragAndDropPage extends basicAuthPage {
     /*Get header text*/
 
     public String getHeaderText() {
-        logger.info("Get title text");
+        logger.info("Get header text");
         return headerText.getText();
     }
 

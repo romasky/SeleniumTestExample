@@ -48,11 +48,13 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
     @FindBy(xpath = "//a[@href='/drag_and_drop']")  //Drag and Drop
     private WebElement dragAndDropPage;
 
+    @FindBy(xpath = "//a[@href='/dropdown']")  //Dropdown
+    private WebElement dropdownPage;
+
 
 
     @FindBy(xpath = "//a[@href='/javascript_alerts']")  //JavaScript Alerts page
     private WebElement jsAlertsPage;
-
 
 
     public mainPage() {
@@ -62,6 +64,7 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
         // и обеспечивает удобное взаимодействие с ними в тестовых сценариях.
     }
 
+
     /*необходимо открыть страницу abTestPage*/
     public abTestPage openAbTestPage(){
         abTestPage.click();
@@ -69,12 +72,14 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
         return new abTestPage();
     }
 
+
     /*необходимо открыть страницу addRemovePage*/
     public addRemovePage openaddRemovePage(){
         addRemovePage.click();
         logger.info("addRemovePage is open");
         return new addRemovePage();
     }
+
 
     /*необходимо открыть страницу openbasicAuthPage*/
     public basicAuthPage openbasicAuthPage(){
@@ -85,12 +90,14 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
         return new basicAuthPage();
     }
 
+
     /*необходимо открыть страницу BrokenImagesPage*/
     public brokenImagesPage openBrokenImagesPage(){
         brokenImages.click();
         logger.info("brokenImagesPage is open");
         return new brokenImagesPage();
     }
+
 
     /*необходимо открыть страницу ChallengingDOMPage*/
     public challengingDOMPage openChallengingDOMPage(){
@@ -99,6 +106,7 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
         return new challengingDOMPage();
     }
 
+
     /*необходимо открыть страницу CheckboxesPage*/
     public checkboxesPage openCheckboxesPage(){
         CheckboxesPage.click();
@@ -106,12 +114,14 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
         return new checkboxesPage();
     }
 
+
     /*необходимо открыть страницу ContextMenuPage*/
     public contextMenuPage openContextMenuPage(){
         contextMenuPage.click();
         logger.info("context Menu Page is open");
         return new contextMenuPage();
     }
+
 
     /*необходимо открыть страницу ContextMenuPage*/
     public digestAuthenticationPage digestAuthenticationPage(){
@@ -122,6 +132,7 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
         return new digestAuthenticationPage();
     }
 
+
     /*необходимо открыть страницу disappearingElementsPage*/
     public disappearingElementsPage opendisappearingElementsPage(){
         disappearingElementsPage.click();
@@ -129,13 +140,21 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
         return new disappearingElementsPage();
     }
 
-    /*необходимо открыть страницу disappearingElementsPage*/
+
+    /*необходимо открыть страницу dragAndDropPage*/
     public dragAndDropPage opendragAndDropPage(){
         dragAndDropPage.click();
-        logger.info("disappearing Elements Page is open");
+        logger.info("dragAndDropPage Elements page is open");
         return new dragAndDropPage();
     }
 
+
+    /*необходимо открыть страницу dropdownPage*/
+    public dropdownPage opendropdownPage(){
+        dropdownPage.click();
+        logger.info("dropdownPage page is open");
+        return new dropdownPage();
+    }
 
 
 
