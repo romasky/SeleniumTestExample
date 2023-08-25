@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class disappearingElementsPage extends basicAuthPage{
+public class disappearingElementsPage extends basicAuthPage {
 
     private final Logger logger = LogManager.getLogger(disappearingElementsPage.class);
 

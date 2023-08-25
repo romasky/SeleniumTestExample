@@ -45,6 +45,8 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
     @FindBy(xpath = "//a[@href='/disappearing_elements']")  //Disappearing Elements
     private WebElement disappearingElementsPage;
 
+    @FindBy(xpath = "//a[@href='/drag_and_drop']")  //Drag and Drop
+    private WebElement dragAndDropPage;
 
 
 
@@ -126,6 +128,15 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
         logger.info("disappearing Elements Page is open");
         return new disappearingElementsPage();
     }
+
+    /*необходимо открыть страницу disappearingElementsPage*/
+    public dragAndDropPage opendragAndDropPage(){
+        dragAndDropPage.click();
+        logger.info("disappearing Elements Page is open");
+        return new dragAndDropPage();
+    }
+
+
 
 
 

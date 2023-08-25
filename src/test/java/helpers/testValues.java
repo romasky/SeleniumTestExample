@@ -56,6 +56,11 @@ public class testValues {
     final public static List<String> DE_BUTTONS_NAME = Arrays.asList("Home", "About", "Contact Us", "Portfolio", "Gallery");
 
 
+    /*dragAndDropTest values*/
+    final public static String DD_HEADER = "Drag and Drop";
+    final public static String DD_A = "A";
+    final public static String DD_B = "B";
+
 
 
 
