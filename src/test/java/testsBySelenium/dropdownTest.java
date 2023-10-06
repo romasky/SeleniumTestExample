@@ -35,7 +35,7 @@ public class dropdownTest extends baseSeleniumTest {
     @Severity(SeverityLevel.NORMAL)
     @ParameterizedTest
     @ValueSource(strings = {"optionone", "optiontwo"})
-    public void testPositiveNamesOfCheckboxes(String condition) {
+    public void testPositiveSelectAndVerifyDropdownValue(String condition) {
 
         dropdownPage dropdownPage = new mainPage()
                 .opendropdownPage();

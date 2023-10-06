@@ -14,7 +14,7 @@ import readProperties.ConfigProvider;
 
 import java.time.Duration;
 
-public class basicAuthPage  extends baseSeleniumPage {
+public class basicAuthPage extends baseSeleniumPage {
     private final Logger logger = LogManager.getLogger(basicAuthPage.class);
 
     @FindBy(xpath = "//body")

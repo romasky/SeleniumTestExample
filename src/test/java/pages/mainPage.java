@@ -51,6 +51,10 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
     @FindBy(xpath = "//a[@href='/dropdown']")  //Dropdown
     private WebElement dropdownPage;
 
+    @FindBy(xpath = "//a[@href='/dynamic_content']")  //Dynamic Content
+    private WebElement dynamicContentPage;
+
+
 
 
     @FindBy(xpath = "//a[@href='/javascript_alerts']")  //JavaScript Alerts page
@@ -68,7 +72,7 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
     /*необходимо открыть страницу abTestPage*/
     public abTestPage openAbTestPage(){
         abTestPage.click();
-        logger.info("abTestPage is open");
+        logger.info("A/B Testing page is open");
         return new abTestPage();
     }
 
@@ -76,7 +80,7 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
     /*необходимо открыть страницу addRemovePage*/
     public addRemovePage openaddRemovePage(){
         addRemovePage.click();
-        logger.info("addRemovePage is open");
+        logger.info("Add/Remove Elements page is open");
         return new addRemovePage();
     }
 
@@ -86,7 +90,7 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
         HasAuthentication authentication = (HasAuthentication) driver;
         authentication.register(()->new UsernameAndPassword(ConfigProvider.USER_LOGIN,ConfigProvider.USER_PASS));
         driver.get(ConfigProvider.URL+ConfigProvider.BASIC_AUTH);
-        logger.info("basicAuthPage is open");
+        logger.info("Basic Auth page is open");
         return new basicAuthPage();
     }
 
@@ -94,7 +98,7 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
     /*необходимо открыть страницу BrokenImagesPage*/
     public brokenImagesPage openBrokenImagesPage(){
         brokenImages.click();
-        logger.info("brokenImagesPage is open");
+        logger.info("Broken Images page is open");
         return new brokenImagesPage();
     }
 
@@ -102,7 +106,7 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
     /*необходимо открыть страницу ChallengingDOMPage*/
     public challengingDOMPage openChallengingDOMPage(){
         challengingDOMPage.click();
-        logger.info("challengingDOMPage is open");
+        logger.info("Challenging DOM page is open");
         return new challengingDOMPage();
     }
 
@@ -110,7 +114,7 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
     /*необходимо открыть страницу CheckboxesPage*/
     public checkboxesPage openCheckboxesPage(){
         CheckboxesPage.click();
-        logger.info("Checkboxes Page is open");
+        logger.info("Checkboxes page is open");
         return new checkboxesPage();
     }
 
@@ -118,7 +122,7 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
     /*необходимо открыть страницу ContextMenuPage*/
     public contextMenuPage openContextMenuPage(){
         contextMenuPage.click();
-        logger.info("context Menu Page is open");
+        logger.info("Context Menu page is open");
         return new contextMenuPage();
     }
 
@@ -128,7 +132,7 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
         HasAuthentication authentication = (HasAuthentication) driver;
         authentication.register(()->new UsernameAndPassword(ConfigProvider.USER_LOGIN,ConfigProvider.USER_PASS));
         driver.get(ConfigProvider.URL+ConfigProvider.DIGEST_AUTH);
-        logger.info("digestAuthenticationPage is open");
+        logger.info("Digest Authentication page is open");
         return new digestAuthenticationPage();
     }
 
@@ -136,7 +140,7 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
     /*необходимо открыть страницу disappearingElementsPage*/
     public disappearingElementsPage opendisappearingElementsPage(){
         disappearingElementsPage.click();
-        logger.info("disappearing Elements Page is open");
+        logger.info("Disappearing Elements page is open");
         return new disappearingElementsPage();
     }
 
@@ -144,7 +148,7 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
     /*необходимо открыть страницу dragAndDropPage*/
     public dragAndDropPage opendragAndDropPage(){
         dragAndDropPage.click();
-        logger.info("dragAndDropPage Elements page is open");
+        logger.info("Drag and Drop page is open");
         return new dragAndDropPage();
     }
 
@@ -152,8 +156,16 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
     /*необходимо открыть страницу dropdownPage*/
     public dropdownPage opendropdownPage(){
         dropdownPage.click();
-        logger.info("dropdownPage page is open");
+        logger.info("Dropdown page is open");
         return new dropdownPage();
+    }
+
+
+    /*необходимо открыть страницу dropdownPage*/
+    public dynamicContentPage opendynamicContentPage(){
+        dynamicContentPage.click();
+        logger.info("Dynamic Content page is open");
+        return new dynamicContentPage();
     }
 
 
@@ -164,7 +176,7 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
     //необходимо открыть страницу javaScriptAlertsPage
     public javaScriptAlertsPage openJSAlertsPage(){
         jsAlertsPage.click();
-        logger.info("javaScriptAlertsPage is open");
+        logger.info("JavaScript Alerts page is open");
         return new javaScriptAlertsPage();
     }
 

@@ -5,6 +5,7 @@ import com.codeborne.selenide.Selenide;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.manager.SeleniumManager;
 
 public class baseTestSelenide {
 
@@ -12,9 +13,10 @@ public class baseTestSelenide {
      * Selenide init
      */
     public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        Configuration.browser = "chrome";
-        Configuration.driverManagerEnabled = true;
+
+        SeleniumManager seleniumManager = SeleniumManager.getInstance();
+
+
         Configuration.browserSize = "1920x1080";
         Configuration.headless = false;
     }
@@ -36,8 +38,4 @@ public class baseTestSelenide {
     public void tearDown(){
         Selenide.closeWebDriver();
     }
-
-
-
-
 }

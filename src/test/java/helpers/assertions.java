@@ -94,7 +94,12 @@ public class assertions {
     }
 
     public static void StringListCompare(List<String> expectedValue, List<String> actualValue) {
-        Assertions.assertEquals(expectedValue, actualValue,"List value is not equal to expectedValue " + expectedValue);
+        for (int i = 0; i < expectedValue.size(); i++) {
+            String expected = expectedValue.get(i);
+            String actual = actualValue.get(i);
+
+            Assertions.assertEquals(expected, actual, "Actual Lists value " +"\"" + actual + "\"" + " is not equal to expectedValue: " + "\"" + expected+"\"");
+        }
         logger.info("Lists are equals");
     }
 

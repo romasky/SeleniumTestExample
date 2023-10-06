@@ -9,11 +9,11 @@ import java.time.Duration;
 
 //В этом классе мы присвоили вебдрайвер, который инициализируется в тестовом классе
 abstract public class baseSeleniumPage {
+
     protected static WebDriver driver;
 
     public static void setDriver(WebDriver webDriver) {
         driver = webDriver;
-
     }
 }
 

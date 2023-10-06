@@ -50,7 +50,6 @@ public class testValues {
 
 
     /*digestAuthenticationTest values*/
-
     final public static String DE_HEADER = "Disappearing Elements";
     final public static String DE_TEXT = "This example demonstrates when elements on a page change by disappearing/reappearing on each page load.";
     final public static List<String> DE_BUTTONS_NAME = Arrays.asList("Home", "About", "Contact Us", "Portfolio", "Gallery");
@@ -68,8 +67,10 @@ public class testValues {
     final public static String DDT_OPTION_2 = "Option 2";
 
 
-
-
+    /*dynamicContentTest values*/
+    final public static String DC_HEADER = "Dynamic Content";
+    final public static String DC_TEXT = "This example demonstrates the ever-evolving nature of content by loading new text and images on each page refresh.";
+    final public static List<String> DC_LIST_OF_TEXT_VALUES = Arrays.asList(testValues.DC_HEADER, testValues.DC_TEXT);
 
 
     /*JavaScript Alerts*/

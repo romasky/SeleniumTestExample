@@ -1,5 +1,6 @@
 package pages;
 
+import core.baseSeleniumPage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
@@ -10,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class dropdownPage extends basicAuthPage {
+public class dropdownPage extends baseSeleniumPage {
 
     private final Logger logger = LogManager.getLogger(dropdownPage.class);
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
