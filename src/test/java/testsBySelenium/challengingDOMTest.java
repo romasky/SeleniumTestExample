@@ -11,6 +11,11 @@ import pages.challengingDOMPage;
 import pages.mainPage;
 import io.qameta.allure.*;
 
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
+
+
+@Execution(ExecutionMode.CONCURRENT)
 public class challengingDOMTest extends baseSeleniumTest {
 
     @Description("This test successfully checks list of buttons size")

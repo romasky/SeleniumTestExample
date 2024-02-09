@@ -125,7 +125,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-            <aspectj.version>1.9.5</aspectj.version>
+            <aspectj.version>1.9.21</aspectj.version>
         <allure.version>{latest-allure-version}</allure.version>
 
 
@@ -138,6 +138,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
                 <configuration>
+                    <parallel>methods</parallel>
                     <testFailureIgnore>false</testFailureIgnore>
                     <argLine>
                         -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
@@ -153,7 +154,7 @@
                     <dependency>
                         <groupId>org.aspectj</groupId>
                         <artifactId>aspectjweaver</artifactId>
-                        <version>1.9.5</version>
+                        <version>1.9.21</version>
                     </dependency>
 
 

@@ -1,6 +1,7 @@
 package pages;
 
 import core.baseSeleniumPage;
+import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.HasAuthentication;
@@ -96,6 +97,7 @@ public class mainPage extends baseSeleniumPage { //extends для того чт�
 
 
     /*необходимо открыть страницу BrokenImagesPage*/
+    @Step("открыть страницу BrokenImagesPage")
     public brokenImagesPage openBrokenImagesPage(){
         brokenImages.click();
         logger.info("Broken Images page is open");

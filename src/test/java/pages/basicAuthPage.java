@@ -2,6 +2,7 @@ package pages;
 
 import core.baseSeleniumPage;
 import helpers.alertHelpers;
+import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
@@ -34,7 +35,7 @@ public class basicAuthPage extends baseSeleniumPage {
 
     /*Check text in auth text*/
 
-
+    @Step("Take text {element} from page")
     public String getTextFromPage(String element) {
         switch (element) {
             case "bodyNotAuthText":
